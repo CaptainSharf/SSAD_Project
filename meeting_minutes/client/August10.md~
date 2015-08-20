@@ -1,0 +1,27 @@
+## Date and time
+10/8/2015 
+5pm
+## Attendees
+Vinayak Athavale,Rohan Karnawat,Aayush Naik
+Shivam Khandelwal(TA)
+## Agenda
+To get a general idea of the project.
+## Minutes
+Client wants a plugin/webapp which will deliver targeted ads or content to the users of their client's websites. 
+Most of the end user of the application/plugin will be using wordpress.
+### Discussion
+Specific technologies required?
+	Client asked us to use Google Analytics.
+ 
+Expected scale of project(no of people using our app and no of people we need to deliver content to)
+	Client answered the projected userbase will be less.
+### Action Points
+Learning Google Analytics
+	Getting familiar with the Google Analytics dashboard
+	Getting familiar with the Google Analytics API
+Learning wordpress
+Learning PHP
+
+## Date of the next meeting
+17/8/2015
+
