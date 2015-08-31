@@ -9,7 +9,7 @@ To get a better idea of the project.
 ## Minutes
 We discussed the various technologies that could be used and came to the conclusion that we will build a webapplication hosted by our client on which their clients will create accounts.
 ### Discussion
-We discussed if we should make a plugin or webapp as with plugin the source code is given out and with a webapp our clients clien do not have complete control over data.
+We discussed if we should make a plugin or webapp as with plugin the source code is given out and with a webapp our clients client do not have complete control over data.
 We finally agreed on building a webapp due to source code being more secure and ease in implementation.
 ### Action Points
 Learning Google Analytics

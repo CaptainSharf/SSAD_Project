@@ -5,7 +5,7 @@
 Vinayak Athavale,Rohan Karnawat,Aayush Naik,Mohammed Sharfuddin
 Shivam Khandelwal(TA)
 ## Agenda
-To get a general idea of the project.
+To introduce ourselves with the client and get an overview of the project
 ## Minutes
 Client wants a plugin/webapp which will deliver targeted ads or content to the users of their client's websites. 
 Most of the end user of the application/plugin will be using wordpress.
