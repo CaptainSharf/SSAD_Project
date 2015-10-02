@@ -10,7 +10,8 @@
 	*Gayathri Choda
 
 ##Description
-The objective is to develop a system that, when integrated into the websites of small/medium businesses, generates content relevant to the user, on the basis of their location, recent activities, industry they belong to (on the basis of content consumed).
+- The aim of the initial phase of development is to provide the managers of websites with a tool to assess and predict traffic on their website. The idea is to dislpay statistics for various pages, aspects based on filters such as location, type of user and platform of usage. 
+- The objective is to develop a system that, when integrated into the websites of small/medium businesses, generates content relevant to the user, on the basis of their location, recent activities, industry they belong to (on the basis of content consumed).
 
 ##Profile of Users/Businesses
 -Small Businesses, commercial and private, using Databases to generate information on the basis of location, type of products the visitor to their online interface wants. 
