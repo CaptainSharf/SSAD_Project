@@ -65,11 +65,14 @@
 		</div>
 
 		<!--  center content  -->
+
 		<div class="col-md-8">
 			<br>
+			<!-- Top filter menu -->
 			<div class="row" ng-controller="TopFilterController">
 				<div class="col-md-4" ng-repeat="item in items">
 					<div class="input-group">
+					    <em>Filters:  </em>
 					<select name="{{item.name}}" data-placeholder="{{item.label}}" class="chosen-select" multiple style="width: 200px;">
 						<option value="{{option}}" ng-repeat="option in item.options">{{option}}</option>
 					</select>
@@ -78,9 +81,14 @@
 			</div>
 			<br>
 
+
+			<!-- view selected meta data -->
+
 			<div class="row">
 				<input class="col-md-10 form-control" id="global-filters">
 			</div>
+			
+			<!-- All the statistics in numerals  -->
 
 			<div class="row" ng-controller="RealTimeSectionsController">
 				<div class="col-md-1"></div>
@@ -90,17 +98,21 @@
 						<h5 ng-bind-html="item.label | unsafe"></h5>
 					</div>
 					<div class="ibox-content">
-						<h1 class="no-margins realtimesection-{{item.name}}">{{item.value}}</h1>
+					    <h1 class="no-margins realtimesection-{{item.name}}">{{item.value}}</h1>
 						<div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
 						<small>New</small>
 					</div>
 				</div>
 				<div class="col-md-1"></div>
 			</div>
+
+			<!-- The linear graph -->
+
 			<div class="flot-chart dashboard-chart">
 				<div class="flot-chart-content" id="flot-dashboard-chart"></div>
 			</div>
 
+			<!-- The fifa style stat graph -->
 
 			<div class="row">
 				<div class="col-md-6">
@@ -116,6 +128,9 @@
 						</div>
 					</div>
 				</div>
+
+
+			<!-- The pie annulus chart -->
 				<div class="col-md-6">
 					<div class="ibox float-e-margins">
 						<div class="ibox-title">
@@ -132,6 +147,7 @@
 				</div>
 			</div>
 
+			<!-- trending articles spline -->
 			<div class="row">
 				<div class="col-md-12 trending-topics">
 					<div class="ibox float-e-margins">
@@ -151,6 +167,8 @@
 				</div>
 			</div>
 		</div>
+
+		<!--Center content over -->
 
 		<!--  live feed comes here!! -->
 		<div class="col-md-2 live-feed" style="border-left: 1px solid #e7eaec;">
