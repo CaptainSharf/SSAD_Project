@@ -11,4 +11,4 @@ This is the SSAD team 6 repository for the project **Content Optimization**.
 
 ##Important links
 * [SRS](SRS)
-* [Project concept](project_concept / ProjectConcept.md)
+* [Project concept](project_concept/ProjectConcept.md)
