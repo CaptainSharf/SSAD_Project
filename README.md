@@ -10,4 +10,5 @@ This is the SSAD team 6 repository for the project **Content Optimization**.
 *     Vinay Reddy
 
 ##Important links
-* SRS: [a relative link](SRS)
+* [SRS](SRS)
+* [Project concept](project_concept / ProjectConcept.md)
