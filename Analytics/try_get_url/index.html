@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>
+	Trials
+    </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    </head>
+    <body>
+	<button type="button" onClick="abc();">Process </button> 
+
+	<script type="text/javascript">
+		function abc()
+		{
+		    xmlhttp = new XMLHttpRequest();
+		    xmlhttp.open("GET", "http://www.digitant.co/piwik/?module=API&method=UserCountry.getContinent&idSite=3&period=day&date=yesterday&format=JSON&token_auth=fb4a14cb95fa74bc88be3aa21b9a0062", false);
+		    xmlhttp.send();
+		    xmlhttp.onreadystatechange = function(){
+			if(xmlhttp.readyState == 4 && xmlhttp.status==200)
+			{
+			    document.write(xmlhttp.responseText);
+			}
+		    }
+		}
+	</script>
+    </body>
+</html>
