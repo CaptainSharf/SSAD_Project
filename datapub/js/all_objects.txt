@@ -1,5 +1,5 @@
 globaldata = [
-{"visitor":"new","source":"links","platform":"desktop","location":"northamerica","articleId":7,"externalTag":"astronomy","internalTag":"physics","time":12}:w
+{"visitor":"new","source":"links","platform":"desktop","location":"northamerica","articleId":7,"externalTag":"astronomy","internalTag":"physics","time":12}
 {"visitor":"returning","source":"internal","platform":"tablet","location":"northamerica","articleId":7,"externalTag":"terrible","internalTag":"particle physics","time":12}
 {"visitor":"loyal","source":"social","platform":"desktop","location":"southamerica","articleId":7,"externalTag":"games","internalTag":"physics","time":12}
 {"visitor":"influencers","source":"links","platform":"mobileweb","location":"australia","articleId":7,"externalTag":"r2-d2","internalTag":"lhc","time":12}
