@@ -1,0 +1,19 @@
+[05-Oct-2015 12:12:56 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'The configuration file {/home/markitome/public_html/digitant.co/piwik/config/config.ini.php} has not been found or could not be read.' in /home/markitome/public_html/digitant.co/piwik/core/Application/Kernel/EnvironmentValidator.php:64
+Stack trace:
+#0 /home/markitome/public_html/digitant.co/piwik/core/Application/Kernel/EnvironmentValidator.php(45): Piwik\Application\Kernel\EnvironmentValidator->checkConfigFileExists('/home/markitome...', false)
+#1 /home/markitome/public_html/digitant.co/piwik/core/Application/Environment.php(185): Piwik\Application\Kernel\EnvironmentValidator->validate()
+#2 /home/markitome/public_html/digitant.co/piwik/core/Application/Environment.php(94): Piwik\Application\Environment->validateEnvironment()
+#3 /home/markitome/public_html/digitant.co/piwik/piwik.php(56): Piwik\Application\Environment->init()
+#4 {main}
+  thrown in /home/markitome/public_html/digitant.co/piwik/core/Application/Kernel/EnvironmentValidator.php on line 64
+[05-Oct-2015 12:15:26 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'The configuration file {/home/markitome/public_html/digitant.co/piwik/config/config.ini.php} has not been found or could not be read.' in /home/markitome/public_html/digitant.co/piwik/core/Application/Kernel/EnvironmentValidator.php:64
+Stack trace:
+#0 /home/markitome/public_html/digitant.co/piwik/core/Application/Kernel/EnvironmentValidator.php(45): Piwik\Application\Kernel\EnvironmentValidator->checkConfigFileExists('/home/markitome...', false)
+#1 /home/markitome/public_html/digitant.co/piwik/core/Application/Environment.php(185): Piwik\Application\Kernel\EnvironmentValidator->validate()
+#2 /home/markitome/public_html/digitant.co/piwik/core/Application/Environment.php(94): Piwik\Application\Environment->validateEnvironment()
+#3 /home/markitome/public_html/digitant.co/piwik/piwik.php(56): Piwik\Application\Environment->init()
+#4 {main}
+  thrown in /home/markitome/public_html/digitant.co/piwik/core/Application/Kernel/EnvironmentValidator.php on line 64
+[05-Oct-2015 13:03:23 UTC] Error in Piwik: Cannot connect to the database:  SQLSTATE[HY000] [1130] Host &#039;localhost&#039; is not allowed to connect to this MySQL server  This may be a temporary issue, try refreshing the page. If the problem persists please contact your Piwik administrator.
+[05-Oct-2015 20:33:41 UTC] Error in Piwik: Cannot connect to the database:  SQLSTATE[HY000] [1130] Host &#039;localhost&#039; is not allowed to connect to this MySQL server  This may be a temporary issue, try refreshing the page. If the problem persists please contact your Piwik administrator.
+[06-Oct-2015 13:54:27 UTC] Error in Piwik: Cannot connect to the database:  SQLSTATE[HY000] [1130] Host &#039;localhost&#039; is not allowed to connect to this MySQL server  This may be a temporary issue, try refreshing the page. If the problem persists please contact your Piwik administrator.
