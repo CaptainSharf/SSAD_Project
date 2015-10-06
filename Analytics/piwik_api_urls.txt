@@ -1,3 +1,1 @@
 http://digitant.co/piwik/?module=API&method=UserCountry.getContinent&idSite=3&period=day&date=today&format=JSON&token_auth=fb4a14cb95fa74bc88be3aa21b9a0062
-
-http://demo.piwik.org/?module=API&method=UserCountry.getCountry&idSite=7&period=day&date=today&format=JSON&token_auth=anonymous
