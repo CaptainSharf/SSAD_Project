@@ -24,15 +24,15 @@
 		}, {
 			label: 'Page Views / Visit',
 			name: 'viewspervisit',
-			value: parseInt(Math.random() * 100)
+			value: parseInt(Math.random() * 100)   // has to be obtained from analytics
 		}, {
 			label: 'Avg Time Spent',
 			name: 'avgtimespent',
-			value: parseInt(Math.random() * 45) + 'm'
+			value: parseInt(Math.random() * 45) + 'm' // has to be obtained from analytics
 		}, {
 			label: 'Virality &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
 			name: 'virality',
-			value: parseInt(Math.random() * 50)
+			value: parseInt(Math.random() * 50) // try tracking sharing
 		}, {
 			label: 'Read rate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
 			name: 'readrate',
@@ -42,7 +42,7 @@
 
 	app.controller('SideMenuController', ['$scope', function(scope) {
 		scope.sections = [{
-			title: 'Rohan',
+			title: 'Visitor',
 			type: 'visitor',
 			items: [{
 				label: 'New',
@@ -140,7 +140,6 @@
 
 	}]);
 
-
 	app.controller('TopFilterController', ['$scope', function(scope) {
 
 		var authors = [];
@@ -158,11 +157,12 @@
 		}, {
 			label: 'Section',
 			name: 'section',
-			options: ['Section 1', 'Section 2', 'Section 3', 'Section 4', 'Section 5', 'Section 6', 'Section 7']
+			options: ['Section 1', 'Section 2', 'Section 3', 'Section 4', 'Section 5', 'Section 6', 'Section 7']  //get list of sections
 		}, {
 			label: 'Category',
 			name: 'category',
-			options: ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5', 'Category 6', 'Category 7']
+			// if condition ??
+			options: ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5', 'Category 6', 'Category 7'] //get list of categories for each section
 		}]
 	}]);
 
@@ -223,6 +223,7 @@
 		});
 
 		// update real time sections
+		// CHANGE THE RANDOM NUMBERS //
 		$('.realtimesection-visits').html(filtered.length);
 		$('.realtimesection-viewspervisit').html(parseInt(Math.random() * 100));
 		$('.realtimesection-avgtimespent').html(parseInt(Math.random() * 45) + 'm');
@@ -231,8 +232,9 @@
 
 
 		// update doughnut chart
+		// CHANGE THE RANDOM NUMBER //
 		$.each(doughnutChart.segments, function(i, item) {
-			item.value = parseInt(Math.random() * 300);
+			item.value = parseInt(Math.random() * 300); // sentiment
 		})
 
 		doughnutChart.update();
@@ -278,6 +280,10 @@
 		setTimeout(doFilter, 50);
 	}
 
+	/* 
+	 * Comment the hard code below here
+	 *
+	 * */
 	generate = function() {
 		var visitor = ['new', 'returning', 'loyal', 'influencers'];
 		var source = ['internal', 'social', 'direct', 'links', 'search'];
@@ -308,7 +314,6 @@
 			if (i > 2000 && i < 4000) {
 				article = articles[7];
 			}
-
 			var item = {
 					visitor: visitor[parseInt(visitor.length * Math.random())],
 					source: source[parseInt(source.length * Math.random())],
@@ -321,7 +326,6 @@
 			};
 			rows.push(item);
 		}
-
 		console.log(JSON.stringify(rows));
 	}
 })();
