@@ -17,6 +17,19 @@
     });
 
     app.controller('RealTimeSectionsController', ['$scope', function(scope) {
+	///////////////////
+	/*var len_timespent = timespentdata.length;
+	var totalTime = 0;
+	var nonZero = 0;
+	for( var i = 0; i < len_timespent; i++){
+	    var T = timespentdata[i].timespent;
+	    if(T>0){
+		totalTime = totalTime + Number(T);
+		nonZero++;
+	    }
+	}
+	var avgTimeSpent = totalTime / nonZero;*/
+	///////////////////
 	scope.realtimesections = [{
 	    label: 'Visits &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
 	name: 'visits',
@@ -28,7 +41,7 @@
 	}, {
 	    label: 'Avg Time Spent',
 	name: 'avgtimespent',
-	value: parseInt(Math.random() * 45) + 'm' // has to be obtained from analytics
+	value:  avgTimeSpent;// has to be obtained from analytics
 	}, {
 	    label: 'Virality &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
 	name: 'virality',
