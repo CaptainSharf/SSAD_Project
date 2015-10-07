@@ -119,7 +119,6 @@
 
     app.controller('TrendingStoriesController', ['$scope', function(scope) {
 	/////////////////////
-	console.log(scope);
 	scope.popular = [];
 	len = globaldata.length;
 	for(var i = 0; i < len; i++){
@@ -143,7 +142,6 @@
 		);
 	    }
 	}	
-	console.log(scope);
 	/////////////////////
     }]);
 
