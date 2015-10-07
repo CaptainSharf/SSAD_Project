@@ -5,9 +5,9 @@ live_url = "http://digitant.co/piwik/?module=API&method=Live.getLastVisitsDeta\
 ils&idSite=3&period=day&date=today&format=JSON&token_auth=fb4a14cb95fa74bc88be\
 3aa21b9a0062"
 
-visit_time_url = "http://digitant.co/piwik/?module=API&method=VisitTime.getVisi\
-tInformationPerServerTime&idSite=3&period=day&date=today&format=JSON&token_auth\
-=fb4a14cb95fa74bc88be3aa21b9a0062"
+no_of_times_url = "http://digitant.co/piwik/?module=API&method=Actions.getPageT\
+itles&idSite=3&period=day&date=today&format=JSON&token_auth=fb4a14cb95fa74bc88b\
+e3aa21b9a0062"
 
 response = urllib2.urlopen(live_url)
 data = json.loads(response.read())
@@ -15,6 +15,8 @@ data = json.loads(response.read())
 live_lis = []
 th_time_lis = []
 time_sp_lis = []
+no_of_times_articles_lis = []
+no_of_times_articles_dic = {}
 for dat in data:
     # print dat, '\n'
     # print dat['visitorId'], dat['visitorType'], dat['referrerTypeName'],
@@ -27,7 +29,10 @@ for dat in data:
             th_dict = {'url': pages['url'], 'title': pages['pageTitle'],
                        'time24': server_time}
             th_time_lis.append(th_dict)
-
+            try:
+                no_of_times_articles_dic[pages['pageTitle']] += 1
+            except KeyError:
+                no_of_times_articles_dic[pages['pageTitle']] = 0
             nos = server_time.replace(' ', ':')
             nos = nos.split(':')[3]
             live_dic = {'visitor': dat['visitorType'], 'source':
@@ -50,6 +55,8 @@ for dat in data:
         except KeyError:
             pass
 
+# print no_of_times_articles_dic
+
 live_j = json.dumps(live_lis)
 live_j = 'globaldata = ' + live_j + ";"
 live_file = open('a.js', 'w+')
@@ -67,3 +74,10 @@ time_sp_j = 'timespentdata = ' + time_sp_j + ";"
 time_sp_file = open('timespent.js', 'w+')
 time_sp_file.write(time_sp_j)
 time_sp_file.close()
+
+no_of_times_articles_lis.append(no_of_times_articles_dic)
+no_of_times_articles_j = json.dumps(no_of_times_articles_lis)
+no_of_times_articles_j = 'numtimesdata = ' + no_of_times_articles_j + ";"
+no_of_times_articles_file = open('no_of_times_articles.js', 'w+')
+no_of_times_articles_file.write(no_of_times_articles_j)
+no_of_times_articles_file.close()
