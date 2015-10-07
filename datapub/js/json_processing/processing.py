@@ -20,7 +20,7 @@ for dat in data:
             # print pages['pageTitle'], pages
             dict = {'visitor': dat['visitorType'], 'source':
                     dat['referrerTypeName'], 'location': dat['continent'],
-                    'title': pages['pageTitle']}
+                    'title': pages['pageTitle'], 'url': pages['url']}
             # print dict
             lis.append((dict))
         except KeyError:
