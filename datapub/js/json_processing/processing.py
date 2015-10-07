@@ -5,10 +5,6 @@ live_url = "http://digitant.co/piwik/?module=API&method=Live.getLastVisitsDeta\
 ils&idSite=3&period=day&date=today&format=JSON&token_auth=fb4a14cb95fa74bc88be\
 3aa21b9a0062"
 
-no_of_times_url = "http://digitant.co/piwik/?module=API&method=Actions.getPageT\
-itles&idSite=3&period=day&date=today&format=JSON&token_auth=fb4a14cb95fa74bc88b\
-e3aa21b9a0062"
-
 response = urllib2.urlopen(live_url)
 data = json.loads(response.read())
 
