@@ -14,6 +14,7 @@ data = json.loads(response.read())
 
 live_lis = []
 th_time_lis = []
+time_sp_lis = []
 for dat in data:
     # print dat, '\n'
     # print dat['visitorId'], dat['visitorType'], dat['referrerTypeName'],
@@ -37,6 +38,17 @@ for dat in data:
             live_lis.append((live_dic))
         except KeyError:
             pass
+        time_spent = 0
+        try:
+            time_spent = pages['timeSpent']
+        except KeyError:
+            pass
+        try:
+            time_sp_dic = {'title': pages['pageTitle'], 'timespent':
+                           time_spent}
+            time_sp_lis.append(time_sp_dic)
+        except KeyError:
+            pass
 
 live_j = json.dumps(live_lis)
 live_j = 'globaldata = ' + live_j + ";"
@@ -49,3 +61,9 @@ th_j = 'timedata = ' + th_j + ";"
 th_file = open('time24.js', 'w+')
 th_file.write(th_j)
 th_file.close()
+
+time_sp_j = json.dumps(time_sp_lis)
+time_sp_j = 'timespentdata = ' + time_sp_j + ";"
+time_sp_file = open('timespent.js', 'w+')
+time_sp_file.write(time_sp_j)
+time_sp_file.close()
