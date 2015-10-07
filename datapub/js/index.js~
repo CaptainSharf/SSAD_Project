@@ -117,32 +117,27 @@
 	}];
     }]);
 
+
     app.controller('TrendingStoriesController', ['$scope', function(scope) {
+
 	/////////////////////
-	scope.popular = [];
-	len = globaldata.length;
-	for(var i = 0; i < len; i++){
-	    var len2 = scope.popular.length;
-	    var index = -1;
-	    for(var j = 0; j < len2; j++){
-		if(scope.popular[j].title == globaldata[i].title){
-		    index = j;
-		    break;
-		}
-	    }
-	    if(index!=-1){
-		scope.popular[j].data += 1;
-	    }
-	    else{
-		scope.popular.push({
-		    title: globaldata[i].title,
-		    author: "rohan",
-		    data: 1
+	
+
+
+
+
+	/////////////////////
+
 		}
 		);
 	    }
-	}	
-	/////////////////////
+	    else{
+		items[item.title].data = parseInt(number(items[item.title].data) + 1);
+	    }
+	})
+
+	scope.globaldata = items
+
     }]);
 
     app.controller('TopFilterController', ['$scope', function(scope) {

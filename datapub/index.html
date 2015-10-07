@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="css/iCheck.custom.css">
 	<link rel="stylesheet" href="plugins/tageditor/jquery.tag-editor.css">
 	<link rel="stylesheet" href="plugins/morris/morris-0.4.3.min.css">
-	<script src="js/viewdata.js"></script>
+	<script src="js/json_processing/a.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js" charset="utf-8"></script>
@@ -149,14 +149,12 @@
 				<div class="col-md-12 trending-topics">
 					<div class="ibox float-e-margins">
 						<div class="ibox-title">
-							<h5>Trending Articles</h5>
+							<h5>Most viewed</h5>
 						</div>
 						<div class="ibox-content no-padding">
 							<ul class="list-group" ng-controller="TrendingStoriesController">
-								<li class="list-group-item" ng-repeat="item in articles">
-									<p><a class="text-info" href="#">{{item.title}}</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- {{item.author}}</p>
-									<span class="trending-sparkline">{{item.data}}</span>
-									<small class="block text-muted"><i class="fa fa-clock-o"></i> 1 minute ago</small>
+								<li class="list-group-item" ng-repeat="item in popular">
+								<p><a class="text-info" href="#">{{item.title}}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- {{item.author}} -- {{item.data}}</p>
 								</li>
 							</ul>
 						</div>
