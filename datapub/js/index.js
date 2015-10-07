@@ -119,6 +119,7 @@
 
     app.controller('TrendingStoriesController', ['$scope', function(scope) {
 	/////////////////////
+	console.log(scope);
 	scope.popular = [];
 	len = globaldata.length;
 	for(var i = 0; i < len; i++){
@@ -142,12 +143,13 @@
 		);
 	    }
 	}	
+	console.log(scope);
 	/////////////////////
     }]);
 
     app.controller('TopFilterController', ['$scope', function(scope) {
 
-	var authors = [];
+/*	var authors = [];
 
 	$.each(articles, function(i, item) {
 	    if (authors.indexOf(item.author) == -1) {
@@ -169,7 +171,7 @@
 	// if condition ??
 	options: ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5', 'Category 6', 'Category 7'] //get list of categories for each section
 	}]
-    }]);
+   */ }]);
 
     function doFilter() {
 	var filters = {};

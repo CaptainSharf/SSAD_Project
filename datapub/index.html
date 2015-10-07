@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="plugins/tageditor/jquery.tag-editor.css">
 	<link rel="stylesheet" href="plugins/morris/morris-0.4.3.min.css">
 	<script src="js/json_processing/a.js"></script>
+	<script src="js/json_processing/osfamily.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js" charset="utf-8"></script>
@@ -131,8 +132,7 @@
 				<div class="col-md-6">
 					<div class="ibox float-e-margins">
 						<div class="ibox-title">
-							<h5>Sentiment</h5>
-
+							<h5>Operating Systems</h5>
 							<div ibox-tools></div>
 						</div>
 						<div class="ibox-content">
@@ -233,6 +233,54 @@
 						<div class="feed-element">
 							<div>
 								<small class="pull-right">5m ago</small>
+								<strong>Damian Nowak</strong>
+								<div>The standard chunk of Lorem Ipsum used </div>
+								<small class="text-muted">Yesterday 8:48 pm - 10.06.2014</small>
+							</div>
+						</div>
+						<div class="feed-element">
+							<div>
+								<small class="pull-right">5m ago</small>
+								<strong>Damian Nowak</strong>
+								<div>The standard chunk of Lorem Ipsum used </div>
+								<small class="text-muted">Yesterday 8:48 pm - 10.06.2014</small>
+							</div>
+						</div>
+						<div class="feed-element">
+							<div>
+								<small class="pull-right">5m ago</small>
+								<strong>Damian Nowak</strong>
+								<div>The standard chunk of Lorem Ipsum used </div>
+								<small class="text-muted">Yesterday 8:48 pm - 10.06.2014</small>
+							</div>
+						</div>
+						<div class="feed-element">
+							<div>
+								<small class="pull-right">5m ago</small>
+								<strong>Damian Nowak</strong>
+								<div>The standard chunk of Lorem Ipsum used </div>
+								<small class="text-muted">Yesterday 8:48 pm - 10.06.2014</small>
+							</div>
+						</div>
+						<div class="feed-element">
+							<div>
+								<small class="pull-right">5m ago</small>
+								<strong>Damian Nowak</strong>
+								<div>The standard chunk of Lorem Ipsum used </div>
+								<small class="text-muted">Yesterday 8:48 pm - 10.06.2014</small>
+							</div>
+						</div>
+						<div class="feed-element">
+							<div>
+								<small class="pull-right">5m ago</small>
+								<strong>Damian Nowak</strong>
+								<div>The standard chunk of Lorem Ipsum used </div>
+								<small class="text-muted">Yesterday 8:48 pm - 10.06.2014</small>
+							</div>
+						</div>
+						<div class="feed-element">
+							<div>
+								<small class="pull-right">5m ago</small>
 								<strong>Gary Smith</strong>
 								<div>200 Latin words, combined with a handful</div>
 								<small class="text-muted">Yesterday 8:48 pm - 10.06.2014</small>
@@ -244,6 +292,66 @@
 		</div>
 	</div>
 
+	<script type="text/javascript">
+		$(document).ready(function() {
+/*
+			var doughnutData = [
+				{
+					value: 30,
+					color: "#a3e1d4",
+					highlight: "#1ab394",
+					label: "Positive"
+				},
+				{
+					value: 50,
+					color: "#dedede",
+					highlight: "#1ab394",
+					label: "Negative"
+				},
+				{
+					value: 100,
+					color: "#b5b8cf",
+					highlight: "#1ab394",
+					label: "Neutral"
+				}
+			];*/
+			console.log("Hello");
+			
+			var doughnutData = [];
+			console.log("Hello");
+			console.log(osfamilydata);
+			var oslen = osfamilydata.length;
+			var colours = ["#a3e1d4","#dedede","#b5b8cf","dedede"];
+			var count = 0;
+			for(var i = 0; i<oslen; i++){
+			    var a = {
+				    value: osfamilydata[i].visits,
+				    color: colours[count],
+				    highlight: "#1ab394",
+				    label: osfamilydata[i].osfamily
+				    };
+			    doughnutData.push(a);
+			    if(osfamilydata[i].visits > 0)
+				count++;
+			}
+
+
+			var doughnutOptions = {
+				segmentShowStroke: true,
+				segmentStrokeColor: "#fff",
+				segmentStrokeWidth: 2,
+				percentageInnerCutout: 45, // This is 0 for Pie charts
+				animationSteps: 100,
+				animationEasing: "easeOutBounce",
+				animateRotate: true,
+				animateScale: false,
+				responsive: true,
+			};
+			var ctx = document.getElementById("doughnutChart").getContext("2d");
+			doughnutChart = new Chart(ctx).Doughnut(doughnutData, doughnutOptions);
+		});
+
+	</script>
 	<script type="text/javascript">
 		updateFlotChart = function(globaldata) {
 			var data = {};
@@ -460,52 +568,14 @@
 
 
 	<script type="text/javascript">
-		$(document).ready(function() {
-			var doughnutData = [
-				{
-					value: 30,
-					color: "#a3e1d4",
-					highlight: "#1ab394",
-					label: "Positive"
-				},
-				{
-					value: 50,
-					color: "#dedede",
-					highlight: "#1ab394",
-					label: "Negative"
-				},
-				{
-					value: 100,
-					color: "#b5b8cf",
-					highlight: "#1ab394",
-					label: "Neutral"
-				}
-			];
 
-			var doughnutOptions = {
-				segmentShowStroke: true,
-				segmentStrokeColor: "#fff",
-				segmentStrokeWidth: 2,
-				percentageInnerCutout: 45, // This is 0 for Pie charts
-				animationSteps: 100,
-				animationEasing: "easeOutBounce",
-				animateRotate: true,
-				animateScale: false,
-				responsive: true,
-			};
+			//$('.trending-sparkline').peity('line', {
+			//	width: 200,
+			//	fill: '#1ab394',
+			//	stroke: '#169c81'
+			//});
 
-
-			var ctx = document.getElementById("doughnutChart").getContext("2d");
-			doughnutChart = new Chart(ctx).Doughnut(doughnutData, doughnutOptions);
-
-			$('.trending-sparkline').peity('line', {
-				width: 200,
-				fill: '#1ab394',
-				stroke: '#169c81'
-			});
-
-			$('.chosen-select').chosen({});
-		});
+			//$('.chosen-select').chosen({});
 	</script>
 </body>
 </html>
