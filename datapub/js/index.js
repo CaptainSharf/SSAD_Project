@@ -17,22 +17,6 @@
     });
 
     app.controller('RealTimeSectionsController', ['$scope', function(scope) {
-
-	///////////////////
-	/*var len_timespent = timespentdata.length;
-	var totalTime = 0;
-	var nonZero = 0;
-	for( var i = 0; i < len_timespent; i++){
-	    var T = timespentdata[i].timespent;
-	    if(T>0){
-		totalTime = totalTime + Number(T);
-		nonZero++;
-	    }
-	}
-	var avgTimeSpent = totalTime / nonZero;*/
-	///////////////////
-
-
 	var count=0;
 	var len=timespentdata.length;
 	for (var i=0;i<len;i++){
