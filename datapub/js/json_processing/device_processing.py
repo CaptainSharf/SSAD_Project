@@ -2,7 +2,7 @@ import urllib2
 import json
 
 device_url = "http://www.digitant.co/piwik/?module=API&method=DevicesDetection.\
-getOsFamilies&idSite=3&period=day&date=yesterday&format=JSON&token_auth=fb4a14cb95f\
+getOsFamilies&idSite=3&period=day&date=today&format=JSON&token_auth=fb4a14cb95f\
 a74bc88be3aa21b9a0062"
 
 response = urllib2.urlopen(device_url)

@@ -24,6 +24,7 @@ for dat in data:
             server_time = pages['serverTimePretty']
             th_dict = {'url': pages['url'], 'title': pages['pageTitle'],
                        'time24': server_time}
+            # print th_dict
             th_time_lis.append(th_dict)
             try:
                 no_of_times_articles_dic[pages['pageTitle']] += 1
