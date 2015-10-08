@@ -17,6 +17,16 @@
     });
 
     app.controller('RealTimeSectionsController', ['$scope', function(scope) {
+
+	var count=0;
+	var len=timespentdata.length;
+	for (var i=0;i<len;i++){
+		if(Number(timespentdata[i].timespent) >= 5)
+			count+=1;
+				
+	}
+	var read_rate_ans=count*100/len;
+
 	scope.realtimesections = [{
 	    label: 'Visits &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
 	name: 'visits',
@@ -36,7 +46,7 @@
 	}, {
 	    label: 'Read rate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
 	name: 'readrate',
-	value: parseInt(Math.random() * 25) + '%'
+	value: parseInt(read_rate_ans) + '%'
 	}]
     }]);
 
