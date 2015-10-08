@@ -16,8 +16,6 @@
 	<link rel="stylesheet" href="plugins/morris/morris-0.4.3.min.css">
 	<script src="js/json_processing/a.js"></script>
 	<script src="js/json_processing/osfamily.js"></script>
-	<script src="js/json_processing/time24.js"></script>
-	<script src="js/json_processing/timespent.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js" charset="utf-8"></script>
@@ -118,7 +116,7 @@
 				<div class="col-md-6">
 					<div class="ibox float-e-margins">
 						<div class="ibox-title">
-							<h5>Tags</h5>
+							<h5>Internal and External Tags</h5>
 							<div ibox-tools></div>
 						</div>
 						<div class="ibox-content">
@@ -156,7 +154,7 @@
 						<div class="ibox-content no-padding">
 							<ul class="list-group" ng-controller="TrendingStoriesController">
 								<li class="list-group-item" ng-repeat="item in popular">
-								<p><a class="text-info" href="#">{{item.title}}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--{{item.data}} <em>views since the beginning of tracking</em></p>
+								<p><a class="text-info" href="#">{{item.title}}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- {{item.author}} -- {{item.data}}</p>
 								</li>
 							</ul>
 						</div>
@@ -491,7 +489,7 @@
 
 		$(document).ready(function() {
 			updateFlotChart(globaldata);
-			updateMainAreaChart(globaldata);
+			//updateMainAreaChart(globaldata);
 		});
 	</script>
 
@@ -505,8 +503,7 @@
 			var data1 = [];
 			var data2 = [];
 
-			
-			/*$.each(articles, function(i, item) {
+			$.each(articles, function(i, item) {
 				$.each(item.tags, function(i, tag) {
 					if (labels.indexOf(tag) == -1) {
 						labels.push(tag);
@@ -521,8 +518,7 @@
 				data1[i]++;
 				i = labels.indexOf(item.internalTag);
 				data2[i]++;
-			});*/
-
+			});
 
 
 			var tagsData = {
