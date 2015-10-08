@@ -19,26 +19,40 @@
     app.controller('RealTimeSectionsController', ['$scope', function(scope) {
 
 	var count=0;
+	var count2=0;
+	var totaltime=0;
 	var len=timespentdata.length;
 	for (var i=0;i<len;i++){
 		if(Number(timespentdata[i].timespent) >= 5)
 			count+=1;
-				
+		if(Number(timespentdata[i].timespent) > 0){
+			count2+=1;
+			totaltime += timespentdata[i].timespent;
+		}
 	}
 	var read_rate_ans=count*100/len;
+	var avgTimeSpent=totaltime/count2;
+
+	var c3=0;
+	var actualvisits = 0;
+	for(var i=0;i<osfamilydata.length;i++){
+	    actualvisits += osfamilydata[i].visits;
+	}
+	var pagetotal = globaldata.length;
+	var viewspervisit = pagetotal/actualvisits;
 
 	scope.realtimesections = [{
 	    label: 'Visits &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
 	name: 'visits',
-	value: globaldata.length
+	value: actualvisits
 	}, {
 	    label: 'Page Views / Visit',
 	name: 'viewspervisit',
-	value: parseInt(Math.random() * 100)   // has to be obtained from analytics
+	value: parseInt(viewspervisit)   // has to be obtained from analytics
 	}, {
 	    label: 'Avg Time Spent',
 	name: 'avgtimespent',
-	value: parseInt(Math.random() * 45) + 'm' // has to be obtained from analytics
+	value: parseInt(avgTimeSpent) + 'm' // has to be obtained from analytics
 	}, {
 	    label: 'Virality &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
 	name: 'virality',

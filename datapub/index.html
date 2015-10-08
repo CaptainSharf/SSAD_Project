@@ -118,7 +118,7 @@
 				<div class="col-md-6">
 					<div class="ibox float-e-margins">
 						<div class="ibox-title">
-							<h5>Internal and External Tags</h5>
+							<h5>Tags</h5>
 							<div ibox-tools></div>
 						</div>
 						<div class="ibox-content">
@@ -156,7 +156,7 @@
 						<div class="ibox-content no-padding">
 							<ul class="list-group" ng-controller="TrendingStoriesController">
 								<li class="list-group-item" ng-repeat="item in popular">
-								<p><a class="text-info" href="#">{{item.title}}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-- {{item.author}} -- {{item.data}}</p>
+								<p><a class="text-info" href="#">{{item.title}}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--{{item.data}} <em>views since the beginning of tracking</em></p>
 								</li>
 							</ul>
 						</div>
@@ -505,7 +505,8 @@
 			var data1 = [];
 			var data2 = [];
 
-			$.each(articles, function(i, item) {
+			
+			/*$.each(articles, function(i, item) {
 				$.each(item.tags, function(i, tag) {
 					if (labels.indexOf(tag) == -1) {
 						labels.push(tag);
@@ -520,7 +521,8 @@
 				data1[i]++;
 				i = labels.indexOf(item.internalTag);
 				data2[i]++;
-			});
+			});*/
+
 
 
 			var tagsData = {
