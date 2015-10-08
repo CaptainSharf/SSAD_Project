@@ -17,6 +17,32 @@
     });
 
     app.controller('RealTimeSectionsController', ['$scope', function(scope) {
+
+	///////////////////
+	/*var len_timespent = timespentdata.length;
+	var totalTime = 0;
+	var nonZero = 0;
+	for( var i = 0; i < len_timespent; i++){
+	    var T = timespentdata[i].timespent;
+	    if(T>0){
+		totalTime = totalTime + Number(T);
+		nonZero++;
+	    }
+	}
+	var avgTimeSpent = totalTime / nonZero;*/
+	///////////////////
+
+
+	var count=0;
+	var len=timespentdata.length;
+	for (var i=0;i<len;i++){
+		if(Number(timespentdata[i].timespent) >= 5)
+			count+=1;
+				
+	}
+	var read_rate_ans=count*100/len;
+
+>>>>>>> aad13e77c092e28f25ab74dce9166b69c240ba5e
 	scope.realtimesections = [{
 	    label: 'Visits &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
 	name: 'visits',
@@ -28,7 +54,7 @@
 	}, {
 	    label: 'Avg Time Spent',
 	name: 'avgtimespent',
-	value: parseInt(Math.random() * 45) + 'm' // has to be obtained from analytics
+	value:  avgTimeSpent;// has to be obtained from analytics
 	}, {
 	    label: 'Virality &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
 	name: 'virality',
@@ -36,7 +62,7 @@
 	}, {
 	    label: 'Read rate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
 	name: 'readrate',
-	value: parseInt(Math.random() * 25) + '%'
+	value: parseInt(read_rate_ans) + '%'
 	}]
     }]);
 
@@ -117,32 +143,41 @@
 	}];
     }]);
 
-
     app.controller('TrendingStoriesController', ['$scope', function(scope) {
-
 	/////////////////////
-	
-
-
-
-
-	/////////////////////
-
+	scope.popular = [];
+	len = globaldata.length;
+	for(var i = 0; i < len; i++){
+	    var len2 = scope.popular.length;
+	    var index = -1;
+	    for(var j = 0; j < len2; j++){
+		if(scope.popular[j].title == globaldata[i].title){
+		    index = j;
+		    break;
+		}
+	    }
+	    if(index!=-1){
+		scope.popular[j].data += 1;
+	    }
+	    else{
+		scope.popular.push({
+		    title: globaldata[i].title,
+		    author: "rohan",
+		    data: 1
 		}
 		);
 	    }
-	    else{
-		items[item.title].data = parseInt(number(items[item.title].data) + 1);
-	    }
-	})
-
-	scope.globaldata = items
-
+	}
+	scope.popular.sort(function(a,b) { 
+		return b.data - a.data 
+	});
+	//here scpe.poplr
+	/////////////////////
     }]);
 
     app.controller('TopFilterController', ['$scope', function(scope) {
 
-	var authors = [];
+/*	var authors = [];
 
 	$.each(articles, function(i, item) {
 	    if (authors.indexOf(item.author) == -1) {
@@ -164,7 +199,7 @@
 	// if condition ??
 	options: ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5', 'Category 6', 'Category 7'] //get list of categories for each section
 	}]
-    }]);
+   */ }]);
 
     function doFilter() {
 	var filters = {};
