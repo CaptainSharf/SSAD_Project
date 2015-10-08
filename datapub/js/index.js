@@ -54,9 +54,9 @@
 	name: 'avgtimespent',
 	value: parseInt(avgTimeSpent) + 'm' // has to be obtained from analytics
 	}, {
-	    label: 'Virality &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
+	    label: 'Page hits &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
 	name: 'virality',
-	value: parseInt(Math.random() * 50) // try tracking sharing
+	value: parseInt(globaldata.length) // try tracking sharing
 	}, {
 	    label: 'Read rate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
 	name: 'readrate',
