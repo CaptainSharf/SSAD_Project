@@ -141,7 +141,11 @@
 		}
 		);
 	    }
-	}	
+	}
+	scope.popular.sort(function(a,b) { 
+		return b.data - a.data 
+	});
+	//here scpe.poplr
 	/////////////////////
     }]);
 
