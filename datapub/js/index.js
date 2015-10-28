@@ -27,7 +27,9 @@
 			count+=1;
 		if(Number(timespentdata[i].timespent) > 0){
 			count2+=1;
-			totaltime += timespentdata[i].timespent;
+			totaltime += Number(timespentdata[i].timespent);
+			//console.log(totaltime);
+			//console.log(timespentdata[i].timespent)
 		}
 	}
 	var read_rate_ans=count*100/len;
@@ -52,7 +54,7 @@
 	}, {
 	    label: 'Avg Time Spent',
 	name: 'avgtimespent',
-	value: parseInt(avgTimeSpent) + 'm' // has to be obtained from analytics
+	value: parseInt(avgTimeSpent) + 's' // has to be obtained from analytics
 	}, {
 	    label: 'Page hits &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
 	name: 'virality',
