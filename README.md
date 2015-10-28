@@ -27,19 +27,19 @@ analyze traffic and other data for effective content publishing.
 
 ### Brief description of various graphs and metrics
 
-__Unique Visits__ : No. of unique visits on a daily basis.
-__Page Views/Visit__ : No. of pages visited per visit on a daily basis.
-__Avg. Time Spent__ : Average time spent on different pages on a daily basis.
-__Page hits__ : No. pages visited on a daily basis.
-__Read rate__ : A certain 'read threshold' is set by the publisher. This shows
+ *__Unique Visits__ : No. of unique visits on a daily basis.
+ *__Page Views/Visit__ : No. of pages visited per visit on a daily basis.
+ *__Avg. Time Spent__ : Average time spent on different pages on a daily basis.
+ *__Page hits__ : No. pages visited on a daily basis.
+ *__Read rate__ : A certain 'read threshold' is set by the publisher. This shows
                 the percentage of visitors above that threshold.
-__Live Feed__ : Shows the most recently visited pages.
-__The FlotChart__ : Shows activity on 24-hour basis.
-__Operating System doughnut-chart__ : Shows operating system-families of
+ *__Live Feed__ : Shows the most recently visited pages.
+ *__The FlotChart__ : Shows activity on 24-hour basis.
+ *__Operating System doughnut-chart__ : Shows operating system-families of
 					                  visitors on a daily basis.
-__Tags radar chart__ : Shows the number of internal and external tags of
+ *__Tags radar chart__ : Shows the number of internal and external tags of
 					   various articles on the website.
-__Location(Continent) doughnut-chart__ : Shows location of visitors on a daily
+ *__Location(Continent) doughnut-chart__ : Shows location of visitors on a daily
                                     basis.
 
 
