@@ -1,0 +1,1 @@
+osfamilydata = [{"osfamily": "GNU/Linux", "visits": 11, "uniqvisitors": 5}, {"osfamily": "Android", "visits": 1, "uniqvisitors": 1}, {"osfamily": "Mac", "visits": 1, "uniqvisitors": 1}];
