@@ -52,6 +52,7 @@ __Location(Continent) doughnut-chart__ : Shows location of visitors on a daily
                                     basis.
 
 
+
 __Note__ : The *location* defaults to the language setting of the user, if the
            IP address to location mapping cannot be found in the location
            database.
