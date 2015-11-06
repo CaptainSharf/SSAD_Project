@@ -7,7 +7,6 @@
 -Aayush Naik
 -Vinayak Athavale
 -Mohammed Sharfuddin
--I. Vinay Reddy
 
 ##Agenda of meeting
 To finalise what needs to be done for R2
