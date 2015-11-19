@@ -2,7 +2,7 @@ import urllib2
 import json
 
 live_url = "http://digitant.co/piwik/?module=API&method=Live.getLastVisitsDeta\
-ils&idSite=3&period=day&date=today&format=JSON&token_auth=fb4a14cb95fa74bc88be\
+ils&idSite=3&period=month&date=today&format=JSON&token_auth=fb4a14cb95fa74bc88be\
 3aa21b9a0062"
 
 response = urllib2.urlopen(live_url)
