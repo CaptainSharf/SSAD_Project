@@ -65,7 +65,8 @@
     }]);
 
     app.controller('SideMenuController', ['$scope', function(scope) {
-	scope.sections = [{
+	scope.sections = [
+    {
 	    title: 'Visitor',
 	type: 'visitor',
 	items: [{
@@ -81,7 +82,8 @@
 	    label: 'Influencers',
 	name: 'influencers'
 	}]
-	}, {
+	}, 
+	{
 	    title: 'Sources',
 	type: 'source',
 	items: [{
@@ -92,7 +94,7 @@
 	    name: 'social'
 	}, {
 	    label: 'Direct',
-	    name: 'direct'
+	    name: 'Direct Entry'
 	}, {
 	    label: 'Links',
 	    name: 'links'
@@ -100,7 +102,8 @@
 	    label: 'Search',
 	    name: 'search'
 	}]
-	}, {
+	},/* 
+	{
 	    title: 'Platform',
 	    type: 'platform',
 	    items: [{
@@ -116,27 +119,28 @@
 		label: 'Tablet',
 		name: 'tablet'
 	    }]
-	}, {
+	},*/ 
+	{
 	    title: 'Location',
 	    type: 'location',
 	    items: [{
 		label: 'North America',
-		name: 'northamerica'
+		name: 'North America'
 	    }, {
 		label: 'South America',
-		name: 'southamerica'
+		name: 'South America'
 	    }, {
 		label: 'Africa',
-		name: 'africa'
+		name: 'Africa'
 	    }, {
 		label: 'Asia',
-		name: 'asia'
+		name: 'Asia'
 	    }, {
 		label: 'Europe',
-		name: 'europe'
+		name: 'Europe'
 	    }, {
 		label: 'Australia',
-		name: 'australia'
+		name: 'Australia'
 	    }]
 	}];
     }]);
@@ -175,29 +179,7 @@
 
     app.controller('TopFilterController', ['$scope', function(scope) {
 
-/*	var authors = [];
-
-	$.each(articles, function(i, item) {
-	    if (authors.indexOf(item.author) == -1) {
-		authors.push(item.author);
-	    }
-	});
-
-	scope.items = [{
-	    label: 'Author',
-	name: 'author',
-	options: authors
-	}, {
-	    label: 'Section',
-	name: 'section',
-	options: ['Section 1', 'Section 2', 'Section 3', 'Section 4', 'Section 5', 'Section 6', 'Section 7']  //get list of sections
-	}, {
-	    label: 'Category',
-	name: 'category',
-	// if condition ??
-	options: ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5', 'Category 6', 'Category 7'] //get list of categories for each section
-	}]
-   */ }]);
+    }]);
 
     function doFilter() {
 	var filters = {};
@@ -255,9 +237,10 @@
 	    }
 	});
 
+	$('.realtimesection-virality').html(filtered.length);
 	// update real time sections
 	// CHANGE THE RANDOM NUMBERS //
-	$('.realtimesection-visits').html(filtered.length);
+	/*
 	$('.realtimesection-viewspervisit').html(parseInt(Math.random() * 100));
 	$('.realtimesection-avgtimespent').html(parseInt(Math.random() * 45) + 'm');
 	$('.realtimesection-virality').html(parseInt(Math.random() * 50));
@@ -303,10 +286,14 @@
 	});
 
 	radarChart.update();
+*/
+	$('#old').remove();
+	$('#inserthere').prepend($('<div id="old"><canvas id="doughnutChart3" height="140"></canvas></div>'));
+	updateDoughnutChart(filtered);
 
 	// update flot chart
 	$('#flot-dashboard-chart').empty();
-	updateMainAreaChart(filtered);
+	updateFlotChart(filtered);
     }
 
     filter = function() {

@@ -56,10 +56,18 @@
 <body>
     <div class="row white-bg">
         <div class="col-md-2" style="border-right: 1px solid #e7eaec;" ng-controller="SideMenuController">
-            <div id="logo"></div>
+	    <div id="logo"></div>
+	    <div id = "dropdown">
+		<select> 
+		    <option value="1"> 1 day </option>
+		    <option value="2"> 2 days </option>
+		    <option value="7"> 7 days </option>
+		    <option value="30"> 30 days </option>
+		    <option value="365"> 1 year </option>
+		</select>
+	    </div>
             <div class="ibox-content" ng-repeat="section in sections">
                 <h2>{{section.title}}</h2>
-                Work under progress
                 <ul class="todo-list m-t small-list">
                     <li ng-repeat="item in section.items">
                         <a class="check-link"><i onclick="filter();" class="fa fa-check-square" label="{{item.label}}" type="{{section.type}}" name="{{item.name}}"></i> </a>
@@ -72,7 +80,6 @@
         <!--  center content  -->
 
         <div class="col-md-8">
-            <br>
             <!-- Top filter menu -->
             <div class="row" ng-controller="TopFilterController">
                 <div class="col-md-4" ng-repeat="item in items">
@@ -129,9 +136,45 @@
                             </div>
                         </div>
                     </div>
+		</div>
+<!-- Page hits sent here -->
+                <div class="col-md-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Page Hits</h5>
+                            <div ibox-tools></div>
+                        </div>
+                        <div class="ibox-content">
+			    <div id="inserthere">
+				<div id="old">
+				    <canvas id="doughnutChart3" height="140"></canvas>
+				</div>
+                            </div>
+                        </div>
+                    </div>
+		</div>
+
+
+
+            </div>
+
+
+            <div class="row">
+
+            <!-- The pie annulus chart -->
+                <div class="col-md-6">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Location (Continent)</h5>
+                            <div ibox-tools></div>
+                        </div>
+                        <div class="ibox-content">
+                            <div>
+                                <canvas id="doughnutChart2" height="140"></canvas>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-
             <!-- The pie annulus chart -->
                 <div class="col-md-6">
                     <div class="ibox float-e-margins">
@@ -146,28 +189,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
+	    </div>
 
-
-            <div class="row">
-
-            <!-- The pie annulus chart -->
-                <div class="col-md-2"></div>
-                <div class="col-md-7">
-                    <div class="ibox float-e-margins">
-                        <div class="ibox-title">
-                            <h5>Location (Continent)</h5>
-                            <div ibox-tools></div>
-                        </div>
-                        <div class="ibox-content">
-                            <div>
-                                <canvas id="doughnutChart2" height="140"></canvas>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3"></div>
-            </div>
 
 
 
@@ -181,7 +204,7 @@
                         <div class="ibox-content no-padding">
                             <ul class="list-group" ng-controller="TrendingStoriesController">
                                 <li class="list-group-item" ng-repeat="item in popular">
-                                <p><a class="text-info" href="http://www.digitant.co/blog">{{item.title}}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--{{item.data}} <em>views since the beginning of tracking</em></p>
+                                <p><a class="text-info" href="http://www.digitant.co/blog">{{item.title}}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--{{item.data}}&nbsp; <em>views since the beginning of tracking</em></p>
                                 </li>
                             </ul>
                         </div>
@@ -351,16 +374,17 @@
         </div>
     </div>
 
-    <script type="text/javascript">
-        $(document).ready(function() {
+<script type="text/javascript">
+	
+	$(document).ready(function() {
             var doughnutData = [];
             var oslen = osfamilydata.length;
-            var colours = ["#a3e1d4","#dedede","#b5b8cf","dedede"];
+            var colours2 = ["#c4e1ac","#4e69a2","#dedede","#b5e8cf","#a3e1d4"];
             var count = 0;
             for(var i = 0; i<oslen; i++){
                 var a = {
                     value: osfamilydata[i].visits,
-                    color: colours[count],
+                    color: colours2[count],
                     highlight: "#d65555",
                     label: osfamilydata[i].osfamily
                     };
@@ -374,7 +398,7 @@
                 segmentShowStroke: true,
                 segmentStrokeColor: "#fff",
                 segmentStrokeWidth: 2,
-                percentageInnerCutout: 45, // This is 0 for Pie charts
+                percentageInnerCutout: 0, // This is 0 for Pie charts
                 animationSteps: 100,
                 animationEasing: "easeOutBounce",
                 animateRotate: true,
@@ -386,7 +410,7 @@
 
             var doughnutData2 = [];
             var oslen2 = osfamilydata.length;
-            var colours2 = ["#a3e1d4","#dedede","#b5b8cf","dedede"];
+            var colours2 = ["#c4e1ac","#4e69a2","#dedede","#b5e8cf","#a3e1d4"];
             var count2 = 0;
             var continent = [];
             continent.push({
@@ -421,14 +445,15 @@
                 doughnutData2.push(a);
                 if(continent[i].count > 0)
                 count2++;
-            }
+	    }
+
 
 
             var doughnutOptions = {
                 segmentShowStroke: true,
                 segmentStrokeColor: "#fff",
                 segmentStrokeWidth: 2,
-                percentageInnerCutout: 45, // This is 0 for Pie charts
+                percentageInnerCutout: 0, // This is 0 for Pie charts
                 animationSteps: 100,
                 animationEasing: "easeOutBounce",
                 animateRotate: true,
@@ -436,7 +461,7 @@
                 responsive: true,
             };
             var ctx = document.getElementById("doughnutChart2").getContext("2d");
-            doughnutChart2 = new Chart(ctx).Doughnut(doughnutData2, doughnutOptions);
+	    doughnutChart2 = new Chart(ctx).Doughnut(doughnutData2, doughnutOptions);
 
 
             var labels = [];
@@ -511,6 +536,7 @@
         });
 
     </script>
+
     <script type="text/javascript">
         updateFlotChart = function(globaldata) {
             var data = {};
@@ -563,7 +589,7 @@
                             borderWidth: 1,
                             color: '#d5d5d5'
                         },
-                        colors: ["#330080", "#464f88"],
+                        colors: ["#3b5998", "#464f88"],
                         xaxis:{
                             ticks: [[0, '12:00AM'], [1, '1:00AM'], [2, '2:00AM'], [3, '3:00AM'], [4, '4.00AM'], [5, '5:00AM'],[6, '6:00AM'], [12, '12:00PM'],[17, '5:00PM'], [18, '6:00PM'], [23, '11:00PM'], [7, '7:00AM'], [8, '8:00AM'], [9, '9:00AM'], [10, '10:00AM'], [11, '11.00AM'], [13, '1:00PM'],[14, '2:00PM'], [15, '3:00PM'],[16, '4:00PM'], [17, '6:00PM'], [19, '7:00PM'], [20, '8:00PM'], [21, '9:00PM'], [22, '10:00PM']]
                         },
@@ -573,167 +599,69 @@
                         tooltip: false
                     }
             );
-        };
+	};
 
+	updateDoughnutChart = function(globaldata){
 
-        function getArticleTitle(id, k) {
-            var title;
-            $.each(articles, function(i, item) {
-                if (item.id == id) {
-                    title = item.title;
-                }
-            });
-
-            return title;
-        }
-
-        updateMainAreaChart = function(globaldata) {
-            var map = {};
-
-            $.each(globaldata, function(i, item) {
-                if (!map[item.time]) {
-                    map[item.time] = {};
-                }
-
-                if (!map[item.time][item.articleId]) {
-                    map[item.time][item.articleId] = 1;
-                }
-                else {
-                    map[item.time][item.articleId]++;
-                }
-            });
-            var data = [];
-            var d = new Date();
-            d.setMinutes(0);
-            d.setSeconds(0);
-            d.setMilliseconds(0);
-            for (var i = 0; i < 24; i++) {
-                d.setHours(i);
-                var item = {
-                    time: d.getTime()
-                };
-                $.each(map[i], function(key, value) {
-                    item[key] = value;
-                })
-                data.push(item);
+            var oslen = globaldata.length;
+	    var a = [];
+	    var flag;
+	    var doughnutData3 = [];
+		for(var i = 0; i<oslen; i++){
+		    flag = 0;
+		    for(var j=0; j<a.length;j++){
+			if(a[j].title == globaldata[i].title){
+			    a[j].count++;
+			    flag = 1;
+			    break;
+			}
+		    }
+		    if(flag==0){
+			a.push({
+			    title: globaldata[i].title,
+				count: 1
+			}
+		    );
+		    }
+		}
+		var colours=["#111a2d","#3b1261","#23355b","#663338","#6600cc","#105487","#763626","#2a3132","#336b87","#90a5c6","#68829e","#505160","#003b46","#07575b","#2e4601","3f681c","#324851","#5d535d","#4f6457", "#063852"];
+		var cc = 0;
+            for(var i = 0; i<a.length; i++){
+                var b = {
+                    value: a[i].count,
+                    color: colours[cc],
+                    highlight: "#7da3a1",
+                    label: a[i].title
+		};
+                doughnutData3.push(b);
+                cc++;
             }
-            var keys = [];
-            var titles = [];
-            $.each(articles, function(i, item) {
-                keys.push(item.id);
-                titles.push(item.title);
-            })
+		console.log(doughnutData3);
 
-            Morris.Area({
-                element: 'flot-dashboard-chart',
-                data: data,
-                xkey: 'time',
-                ykeys: keys,
-                labels: titles,
-                pointSize: 2,
-                hideHover: 'auto',
-                resize: true,
-                //lineColors: ['#87d6c6', '#54cdb4','#1ab394'],
-                lineWidth:2,
-                pointSize:1,
-            });
-        }
+            var doughnutOptions = {
+                segmentShowStroke: true,
+                segmentStrokeColor: "#fff",
+                segmentStrokeWidth: 1,
+                percentageInnerCutout: 50, // This is 0 for Pie charts
+                animationSteps: 100,
+                animationEasing: "easeOutBounce",
+                animateRotate: true,
+                animateScale: false,
+                responsive: true,
+            };
+            var ctx = document.getElementById("doughnutChart3").getContext("2d");
+	    doughnutChart = new Chart(ctx).Doughnut(doughnutData3, doughnutOptions);
+
+	};
+
+
 
         $(document).ready(function() {
             updateFlotChart(globaldata);
-            updateMainAreaChart(globaldata);
+            updateDoughnutChart(globaldata);
         });
     </script>
 
-
-    <!--  tag Chart -->
-
-    <script type="text/javascript">
-        //$(document).ready(function() {
-    /*
-
-            $.each(articles, function(i, item) {
-                $.each(item.tags, function(i, tag) {
-                    if (labels.indexOf(tag) == -1) {
-                        labels.push(tag);
-                        data1.push(0);
-                        data2.push(0);
-                    }
-                })
-            });
-
-            $.each(tagdata, function(i, item) {
-                i = labels.indexOf(item.externalTag);
-                data1[i]++;
-                i = labels.indexOf(item.internalTag);
-                data2[i]++;
-            });
-
-
-
-            var tagsData = {
-                    labels: labels,
-                    datasets: [
-                        {
-                            label: "My First dataset",
-                            fillColor: "rgba(220,220,220,0.2)",
-                            strokeColor: "rgba(220,220,220,1)",
-                            pointColor: "rgba(220,220,220,1)",
-                            pointStrokeColor: "#fff",
-                            pointHighlightFill: "#fff",
-                            pointHighlightStroke: "rgba(220,220,220,1)",
-                            data: data1
-                        },
-                        {
-                            label: "My Second dataset",
-                            fillColor: "rgba(26,179,148,0.2)",
-                            strokeColor: "rgba(26,179,148,1)",
-                            pointColor: "rgba(26,179,148,1)",
-                            pointStrokeColor: "#fff",
-                            pointHighlightFill: "#fff",
-                            pointHighlightStroke: "rgba(151,187,205,1)",
-                            data: data2
-                        }
-                    ]
-                };
-
-                var tagsOptions = {
-                    scaleShowLine: true,
-                    angleShowLineOut: true,
-                    scaleShowLabels: false,
-                    scaleBeginAtZero: true,
-                    angleLineColor: "rgba(0,0,0,.1)",
-                    angleLineWidth: 1,
-                    pointLabelFontFamily: "'Arial'",
-                    pointLabelFontStyle: "normal",
-                    pointLabelFontSize: 10,
-                    pointLabelFontColor: "#666",
-                    pointDot: true,
-                    pointDotRadius: 3,
-                    pointDotStrokeWidth: 1,
-                    pointHitDetectionRadius: 20,
-                    datasetStroke: true,
-                    datasetStrokeWidth: 2,
-                    datasetFill: true,
-                    responsive: true,
-                }
-
-                var ctx = document.getElementById("tagsChart").getContext("2d");
-                radarChart = new Chart(ctx).Radar(tagsData, tagsOptions);
-        });*/
-    </script>
-
-
-    <script type="text/javascript">
-
-            //$('.trending-sparkline').peity('line', {
-            //  width: 200,
-            //  fill: '#1ab394',
-            //  stroke: '#169c81'
-            //});
-
-            //$('.chosen-select').chosen({});
-    </script>
 
 
     <?php
@@ -854,7 +782,8 @@
         //echo $j;
         $j_file = fopen('js/json_processing/osfamily.js', 'w+');
         fwrite($j_file, $j);
-        fclose($j_file);        
+        fclose($j_file);
+        print_r($_POST);
 
     ?>
 

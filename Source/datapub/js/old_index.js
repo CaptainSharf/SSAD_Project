@@ -17,26 +17,50 @@
     });
 
     app.controller('RealTimeSectionsController', ['$scope', function(scope) {
+
+	var count=0;
+	var count2=0;
+	var totaltime=0;
+	var len=timespentdata.length;
+	for (var i=0;i<len;i++){
+		if(Number(timespentdata[i].timespent) >= 5)
+			count+=1;
+		if(Number(timespentdata[i].timespent) > 0){
+			count2+=1;
+			totaltime += timespentdata[i].timespent;
+		}
+	}
+	var read_rate_ans=count*100/len;
+	var avgTimeSpent=totaltime/count2;
+
+	var c3=0;
+	var actualvisits = 0;
+	for(var i=0;i<osfamilydata.length;i++){
+	    actualvisits += osfamilydata[i].visits;
+	}
+	var pagetotal = globaldata.length;
+	var viewspervisit = pagetotal/actualvisits;
+
 	scope.realtimesections = [{
 	    label: 'Visits &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
 	name: 'visits',
-	value: globaldata.length
+	value: actualvisits
 	}, {
 	    label: 'Page Views / Visit',
 	name: 'viewspervisit',
-	value: parseInt(Math.random() * 100)   // has to be obtained from analytics
+	value: parseInt(viewspervisit)   // has to be obtained from analytics
 	}, {
 	    label: 'Avg Time Spent',
 	name: 'avgtimespent',
-	value: parseInt(Math.random() * 45) + 'm' // has to be obtained from analytics
+	value: parseInt(avgTimeSpent) + 'm' // has to be obtained from analytics
 	}, {
-	    label: 'Virality &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
+	    label: 'Page hits &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
 	name: 'virality',
-	value: parseInt(Math.random() * 50) // try tracking sharing
+	value: parseInt(globaldata.length) // try tracking sharing
 	}, {
 	    label: 'Read rate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
 	name: 'readrate',
-	value: parseInt(Math.random() * 25) + '%'
+	value: parseInt(read_rate_ans) + '%'
 	}]
     }]);
 
@@ -117,32 +141,41 @@
 	}];
     }]);
 
-
     app.controller('TrendingStoriesController', ['$scope', function(scope) {
-
 	/////////////////////
-	
-
-
-
-
-	/////////////////////
-
+	scope.popular = [];
+	len = globaldata.length;
+	for(var i = 0; i < len; i++){
+	    var len2 = scope.popular.length;
+	    var index = -1;
+	    for(var j = 0; j < len2; j++){
+		if(scope.popular[j].title == globaldata[i].title){
+		    index = j;
+		    break;
+		}
+	    }
+	    if(index!=-1){
+		scope.popular[j].data += 1;
+	    }
+	    else{
+		scope.popular.push({
+		    title: globaldata[i].title,
+		    author: "rohan",
+		    data: 1
 		}
 		);
 	    }
-	    else{
-		items[item.title].data = parseInt(number(items[item.title].data) + 1);
-	    }
-	})
-
-	scope.globaldata = items
-
+	}
+	scope.popular.sort(function(a,b) { 
+		return b.data - a.data 
+	});
+	//here scpe.poplr
+	/////////////////////
     }]);
 
     app.controller('TopFilterController', ['$scope', function(scope) {
 
-	var authors = [];
+/*	var authors = [];
 
 	$.each(articles, function(i, item) {
 	    if (authors.indexOf(item.author) == -1) {
@@ -164,7 +197,7 @@
 	// if condition ??
 	options: ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5', 'Category 6', 'Category 7'] //get list of categories for each section
 	}]
-    }]);
+   */ }]);
 
     function doFilter() {
 	var filters = {};
