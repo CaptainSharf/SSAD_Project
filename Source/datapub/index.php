@@ -57,7 +57,9 @@
     <div class="row white-bg">
         <div class="col-md-2" style="border-right: 1px solid #e7eaec;" ng-controller="SideMenuController">
 	    <div id="logo"></div>
+<hr>
 	    <div id = "dropdown">
+<hr>
 		<select> 
 		    <option value="1"> 1 day </option>
 		    <option value="2"> 2 days </option>
