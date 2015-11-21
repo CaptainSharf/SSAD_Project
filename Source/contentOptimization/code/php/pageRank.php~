@@ -72,7 +72,13 @@ while($row = mysql_fetch_array($retval, MYSQL_NUM))
 	}
 }
 
+
 mysql_close($conn);
+
+
+
+
+
 
 
 
