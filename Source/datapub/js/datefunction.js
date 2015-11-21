@@ -1,5 +1,5 @@
 /* this is the limit on the number of days of the filter.you can check the functionality of the code by changing this value */
-old=2;
+old=3;
 
 
 /*this function is to calculate the number of days between any two given dates*/
@@ -15,7 +15,7 @@ function days_between(date1, date2) {
 
 
 /* tempdata is just a list of dictionaries.It contains an index number for checking "a" and the datetime attribute here is "time24".time can be in any format but should contain year and also it should be a datetime string */
-tempdata=[{"a":1,"time24":"Saturday 21 November 2015"},{"a":2,"time24":"October 13, 2014 11:13:00"},{"a":3,"time24":"Thursday 19 November 2015"}];
+tempdata=[{"a":1,"time24":"2015-10-21"},{"a":2,"time24":"2015-10-18"},{"a":3,"time24":"2015-10-13"}];
 
 
 var d = new Date();
@@ -27,7 +27,9 @@ var size=tempdata.length;
 var retarr=[];
 for(i=0;i<size;i++)
 {
-    var temp1=Date.parse(tempdata[i]["time24"]);
+    var temp=tempdata[i]["time24"].split("-");
+    var temp3=new Date(temp[0],temp[1],temp[2]);
+    var temp1=Date.parse(temp3);
     var temp2=Date.parse(d);
     var firstDate = new Date(temp1);
 	var secondDate = new Date(temp2);
