@@ -26,7 +26,7 @@ echo 'Connected successfully';
 mysql_select_db( 'content_optimization' );
 
 //will get distinct url with min timestamp
-$sql="SELECT tt.*
+/*$sql="SELECT tt.*
 FROM url_and_baseScore tt
 INNER JOIN
     (SELECT url, MIN(dateViewed) AS MinDateTime
@@ -34,6 +34,8 @@ INNER JOIN
     GROUP BY url) groupedtt 
 ON tt.url = groupedtt.url 
 AND tt.dateViewed = groupedtt.MinDateTime";
+*/
+$sql="select url,dateViewed,COUNT(*) from url_and_baseScore group by url";
 
 $retval = mysql_query( $sql, $conn );
 if(! $retval )

@@ -26,7 +26,7 @@ echo 'Connected successfully';
 mysql_select_db( 'content_optimization' );
 
 //will get distinct url with min timestamp
-$sql="SELECT tt.*
+/*$sql="SELECT tt.*
 FROM url_and_baseScore tt
 INNER JOIN
     (SELECT url, MIN(dateViewed) AS MinDateTime
@@ -34,6 +34,8 @@ INNER JOIN
     GROUP BY url) groupedtt 
 ON tt.url = groupedtt.url 
 AND tt.dateViewed = groupedtt.MinDateTime";
+*/
+$sql="select url,dateViewed,COUNT(*) from url_and_baseScore group by url";
 
 $retval = mysql_query( $sql, $conn );
 if(! $retval )
@@ -55,7 +57,7 @@ while($row = mysql_fetch_array($retval, MYSQL_NUM))
 			$pageview=$row1['pageViews'];
 			$pageview+=$row['pageViews'];
 						
-			$basep=returnBasePriority($row[1],$pageview);
+			$basep=returnBasePriority($row['dateViewed'],$pageview);
 			$sql1="update url_and_baseScore_and_pageViews set pageViews=$pageview,baseScore=$basep where url=$row[1]";
 			$retval2 = mysql_query( $sql1, $conn );
 		}
@@ -66,7 +68,7 @@ while($row = mysql_fetch_array($retval, MYSQL_NUM))
 		
 		$pageview=$row['pageViews'];
 
-		$basep=returnBasePriority($row[1],$pageview);
+		$basep=returnBasePriority($row['dateViewed'],$pageview);
 		$sql1="insert into url_and_baseScore_and_pageViews (url,baseScores,pageViews) values($row[0],$basep,$pageview)";
 		$retval2 = mysql_query( $sql1, $conn );	
 	}
