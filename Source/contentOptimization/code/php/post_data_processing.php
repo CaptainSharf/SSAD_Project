@@ -36,7 +36,23 @@ if (!empty($_POST)) {
 			$retval_title  = mysql_query($sql_title_ins, $conn);
 		}
 
-		//url and domain
+		//personal pageview score
+		$sql_vpage    = "SELECT * from `personal_pageview_score` where `visitorId`='$visitorId' and `url`='$url';";
+		$retval_vpage = mysql_query($sql_vpage, $conn) or die("personal_pageview_score\n".mysql_error());
+		echo "Vpage successful\n";
+		if (mysql_num_rows($retval_vpage) == 0) {
+			$sql_vpage        = "INSERT into `personal_pageview_score` (`visitorId`, `url`) values ('$visitorId', '$url');";
+			$retval_vpage_ins = mysql_query($sql_vpage, $conn);
+		} else {
+			$row    = mysql_fetch_array($retval_vpage, MYSQL_ASSOC);
+			$vscore = (int) $row['viewScore'];
+			$vscore -= 17;
+			echo "\nvscore $vscore\n";
+			$url_temp        = $row['url'];
+			$vid_temp        = $row['visitorId'];
+			$sql_vpage       = "UPDATE `personal_pageview_score` set `viewScore`=$vscore where `visitorId`='$vid_temp' and `url`='$url_temp';";
+			$retval_vpage_up = mysql_query($sql_vpage, $conn);
+		}
 
 		foreach ($splitString as $tagName) {
 			$sql = "SELECT * from `personal_score` where `visitorId`='$visitorId' and `tag`='$tagName' and `url`='$url';";

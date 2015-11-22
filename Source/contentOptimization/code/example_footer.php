@@ -129,6 +129,7 @@ jQuery.when(jQuery.ajax({
         console.log(response);
     }
   })).done(function(a1){
+//--------//
 jQuery.ajax({
     url:
 'http://www.digitant.co/contentOptimization/code/php/pageRank.php',
@@ -143,7 +144,26 @@ jQuery.ajax({
         console.log(response);
     },
 });
+
+jQuery.ajax({
+    url:
+'http://www.digitant.co/contentOptimization/code/php/main.php',
+    type:'POST',
+    data: {
+        visitor_id: v_id,
+        domain_id: location.hostname,
+    },
+    success: function(response) {
+        console.log(response);
+    },
+    failure: function(response) {
+        console.log(response);
+    },
 });
+//------//
+});
+
+
 </script>
 <!-- Piwik -->
 <script type="text/javascript">
