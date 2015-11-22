@@ -385,10 +385,19 @@
 
 <script type="text/javascript">
 
+	var deadline = 0;
 	setdeadline = function(){
-	var deadline = document.getElementById("Mobility").selectedIndex;
-	console.log(deadline);}
+	    deadline = document.getElementById("Mobility").selectedIndex;
+	}
+	alterGlobalData = function(list){
+	    if(deadline == 0)
+		return list;
+	    else{
+		return getNewGlobalData(list);
+	    }
+	}
 
+	var temp_array = alterGlobalData(globaldata);
 	$(document).ready(function() {
             var doughnutData = [];
             var oslen = osfamilydata.length;
@@ -441,9 +450,9 @@
             continent.push({
                 name: "Australia",
                 count: 0});
-            for(var i = 0; i<globaldata.length; i++){
+            for(var i = 0; i<temp_array.length; i++){
                 for(var j=0; j<5;j++){
-                if(continent[j].name == globaldata[i].location){
+                if(continent[j].name == temp_array[i].location){
                     continent[j].count++;
                 }
                 }
@@ -551,9 +560,9 @@
     </script>
 
     <script type="text/javascript">
-        updateFlotChart = function(globaldata) {
+        updateFlotChart = function(GD) {
             var data = {};
-            $.each(globaldata, function(i, item) {
+            $.each(GD, function(i, item) {
                 if (!data[item.articleId]) {
                     data[item.articleId] = {};
                 }
@@ -614,16 +623,16 @@
             );
 	};
 
-	updateDoughnutChart = function(globaldata){
+	updateDoughnutChart = function(GD){
 
-            var oslen = globaldata.length;
+            var oslen = GD.length;
 	    var a = [];
 	    var flag;
 	    var doughnutData3 = [];
 		for(var i = 0; i<oslen; i++){
 		    flag = 0;
 		    for(var j=0; j<a.length;j++){
-			if(a[j].title == globaldata[i].title){
+			if(a[j].title == GD[i].title){
 			    a[j].count++;
 			    flag = 1;
 			    break;
@@ -631,7 +640,7 @@
 		    }
 		    if(flag==0){
 			a.push({
-			    title: globaldata[i].title,
+			    title: GD[i].title,
 				count: 1
 			}
 		    );
@@ -669,8 +678,8 @@
 
 
         $(document).ready(function() {
-            updateFlotChart(globaldata);
-            updateDoughnutChart(globaldata);
+            updateFlotChart(temp_array);
+            updateDoughnutChart(temp_array);
         });
     </script>
 
