@@ -130,7 +130,7 @@ jQuery.when(jQuery.ajax({
     }
   })).done(function(a1){
 //--------//
-jQuery.ajax({
+jQuery.when(jQuery.ajax({
     url:
 'http://www.digitant.co/contentOptimization/code/php/pageRank.php',
     type:'POST',
@@ -143,11 +143,28 @@ jQuery.ajax({
     failure: function(response) {
         console.log(response);
     },
+})).done(function(a2){
+    jQuery.ajax({
+    url:
+'http://www.digitant.co/contentOptimization/code/php/contentoptimiser.php',
+    type:'POST',
+    data: {
+        visitor_id: v_id,
+    },
+    success: function(response) {
+        console.log(response);
+    },
+    failure: function(response) {
+        console.log(response);
+    },
+});
+
+
 });
 
 jQuery.ajax({
     url:
-'http://www.digitant.co/contentOptimization/code/php/main.php',
+'http://www.digitant.co/contentOptimization/code/php/recentlyViewed.php',
     type:'POST',
     data: {
         visitor_id: v_id,
@@ -162,8 +179,6 @@ jQuery.ajax({
 });
 //------//
 });
-
-
 </script>
 <!-- Piwik -->
 <script type="text/javascript">

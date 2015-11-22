@@ -1,62 +1,67 @@
 <?php
-	$dbhost = 'localhost:3036';
-	$dbuser = 'guest';
-	$dbpass = 'guest123';
-	$conn = mysql_connect($dbhost, $dbuser, $dbpass);
-	if(! $conn )
-	{
-  	die('Could not connect: ' . mysql_error());
-	}
-	echo 'Connected successfully';
-	mysql_select_db( 'content_optimization' );
+if (!empty($_POST)) {
+	$mysql_host = 'localhost';
+	$mysql_user = 'aayn';
+	$mysql_pass = 'justdoit123';
+	$mysql_db   = 'content_optimization';
+	$conn       = mysql_connect($mysql_host, $mysql_user, $mysql_pass) or die("connection failed".mysql_error());
+	echo 'Connected successfully CO';
 
+	mysql_select_db('content_optimization');
 
-	$sql="SELECT * from `url_and_baseScore_and_pageViews`;";
-	$retval = mysql_query( $sql, $conn );
-
+	$sql    = "SELECT * from `url_and_baseScore_and_pageViews`;";
+	$retval = mysql_query($sql, $conn) or die("connection failed 2".mysql_error());
+	echo "1\n";
 	$finalscorearray;
+	$sumtagscore = 0;
+	$visitorId   = $_POST['visitor_id'];
+	while ($row = mysql_fetch_array($retval, MYSQL_ASSOC)) {
+		$temp = $row['url'];
+		//print_r($temp);
+		echo "\n";
+		$sql1    = "SELECT distinct `tag` from `personal_score` where `url`='$temp';";
+		$retval1 = mysql_query($sql1, $conn) or die("connection failed 3".mysql_error());
 
-	while($row = mysql_fetch_array($retval, MYSQL_ASSOC))
-	{
-		$temp=$row['url'];	
-		$sql1="SELECT distinct `tag` from `personal_score` where `url`='$temp';";
-		$retval1 = mysql_query( $sql1, $conn );
+		$sumofall = 0;
+		while ($row1 = mysql_fetch_array($retval1, MYSQL_ASSOC)) {
+			$temp    = $row1['tag'];
+			$sql2    = "SELECT `tagScore` from `personal_score` where `tag`='$temp' and `visitorId`='$visitorId';";
+			$retval2 = mysql_query($sql2, $conn) or die("connection failed 4".mysql_error());
 
-		$sumtagscore=0;
-		while($row1 = mysql_fetch_array($retval1, MYSQL_ASSOC))
-		{
-			$temp=$row['tag'];
-			$sql2="SELECT `tagScore` from `personal_score` where `tag`='$temp' and `visitorId`=$visitorId;";
-			$retval2 = mysql_query( $sql2, $conn );			
-
-			while($row2 = mysql_fetch_array($retval2, MYSQL_ASSOC))
-			{
-				$sumtagscore+=$row['tagScore'];
+			while ($row2 = mysql_fetch_array($retval2, MYSQL_ASSOC)) {
+				$sumtagscore += $row2['tagScore'];
 			}
 		}
 
-		$sumtagscore+=$row['baseScore'];
+		$sumallscore = $sumtagscore;
+		$temp        = $row['url'];
+		$sumallscore += $row['baseScore'];
+		$sql4    = "SELECT `viewScore` from `personal_pageview_score` where `visitorId`='$visitorId' and `url`='$temp';";
+		$retval4 = mysql_query($sql4, $conn) or die("connection failed 5".mysql_error());
+		while ($row4 = mysql_fetch_array($retval4, MYSQL_ASSOC)) {
+			$sumallscore += $row4['viewScore'];
 
-		$finalscorearray["$temp"]=$sumtagscore;
-	
+		}
+		$temp = $row['url'];
+
+		$finalscorearray["$temp"] = $sumallscore;
+
 	}
 
 	arsort($finalscorearray);
-
+	print_r($finalscorearray);
 	$sliced_array = array_slice($finalscorearray, 0, 5);
 
 	$titlearray;
-	foreach ($finalscorearray as $key => $value) 
-	{
-		$sql="SELECT * from `url_and_pageTitle` where `url`='$key';";
-		$retval = mysql_query( $sql, $conn );
-		while($row = mysql_fetch_array($retval, MYSQL_ASSOC))
-		{		
-				$temp=$row[0];           //'url'
-				$titlearray[$temp]=$row[1];     //"title"		
+	foreach ($finalscorearray as $key => $value) {
+		$sql    = "SELECT * from `url_and_pageTitle` where `url`='$key';";
+		$retval = mysql_query($sql, $conn);
+		while ($row = mysql_fetch_array($retval, MYSQL_ASSOC)) {
+			$temp              = $row['url'];//'url'
+			$titlearray[$temp] = $row['pageTitle'];//"title"
 		}
 
 	}
-
-
+	//print_r($titlearray);
+}
 ?>
