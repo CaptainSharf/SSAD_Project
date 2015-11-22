@@ -73,11 +73,7 @@ while($row = mysql_fetch_array($retval, MYSQL_NUM))
 
 mysql_close($conn);
 
-
-
 //functions for finding base score
-
-
 
 function returnBasePriority($date_added,$page_views){
 	
