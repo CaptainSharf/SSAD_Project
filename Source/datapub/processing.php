@@ -57,7 +57,7 @@ if ($_POST['dummy'] == '1') {
 
 				$nos      = str_replace(" ", ":", $server_time);
 				$nos      = explode(":", $nos)[3];
-				$live_dic = array('serverdate' => $page['serverDate'], 'visittime' => $server_time, 'timespent' => $time_spent, 'visitor' => $dat['visitorType'], 'source' => $dat['referrerTypeName'], 'location' => $dat['continent'], 'title' => $page['pageTitle'], 'url' => $page['url'], 'time' => $nos);
+				$live_dic = array('serverdate' => $dat['serverDate'], 'visittime' => $server_time, 'timespent' => $time_spent, 'visitor' => $dat['visitorType'], 'source' => $dat['referrerTypeName'], 'location' => $dat['continent'], 'title' => $page['pageTitle'], 'url' => $page['url'], 'time' => $nos);
 				array_push($live_lis, $live_dic);
 			}
 

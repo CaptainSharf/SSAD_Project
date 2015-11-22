@@ -56,20 +56,20 @@
 <body>
     <div class="row white-bg">
         <div class="col-md-2" style="border-right: 1px solid #e7eaec;" ng-controller="SideMenuController">
-	    <div id="logo"></div>
-	    <hr>
-	    <h2 style = "text-align:center " > <strong> Filters </strong> </h2>
-	    <div id = "ibox-content" style = "text-align:center">View data from the last: 
-		<select id="Mobility" name="Mobility" style = "width:80%" onchange= "setdeadline()">
-		    <option selected ="">All time </option>
-		    <option> 1 day </option>
-		    <option> 2 days </option>
-		    <option> 1 week </option>
-		    <option> 1 month </option>
-		    <option> 1 year </option>
-		</select>
-	    </div>
-	    <br>
+        <div id="logo"></div>
+        <hr>
+        <h2 style = "text-align:center " > <strong> Filters </strong> </h2>
+        <div id = "ibox-content" style = "text-align:center">View data from the last: 
+        <select id="Mobility" name="Mobility" style = "width:80%" onchange= "setdeadline()">
+            <option selected ="">All time </option>
+            <option> 1 day </option>
+            <option> 2 days </option>
+            <option> 1 week </option>
+            <option> 1 month </option>
+            <option> 1 year </option>
+        </select>
+        </div>
+        <br>
             <div class="ibox-content" ng-repeat="section in sections">
                 <h2>{{section.title}}</h2>
                 <ul class="todo-list m-t small-list">
@@ -140,7 +140,7 @@
                             </div>
                         </div>
                     </div>
-		</div>
+        </div>
 <!-- Page hits sent here -->
                 <div class="col-md-6">
                     <div class="ibox float-e-margins">
@@ -149,14 +149,14 @@
                             <div ibox-tools></div>
                         </div>
                         <div class="ibox-content">
-			    <div id="inserthere">
-				<div id="old">
-				    <canvas id="doughnutChart3" height="140"></canvas>
-				</div>
+                <div id="inserthere">
+                <div id="old">
+                    <canvas id="doughnutChart3" height="140"></canvas>
+                </div>
                             </div>
                         </div>
                     </div>
-		</div>
+        </div>
 
 
 
@@ -193,7 +193,7 @@
                         </div>
                     </div>
                 </div>
-	    </div>
+        </div>
 
 
 
@@ -386,36 +386,36 @@
 
 <script type="text/javascript">
 
-	var deadline = 731,gd = [];
-	setdeadline = function(){
-	    deadline = document.getElementById("Mobility").selectedIndex;
-	    
-	    if(deadline==3)
-		deadline = 7;
-	    else if(deadline == 4)
-		deadline = 30;
-	    else if(deadline == 5)
-		deadline = 366;
-	    else if(deadline == 1)
-		deadline = 2;
-	    else if(deadline == 2)
-		deadline = 3;
-	    
-	    getNewGlobalData(globaldata,deadline,0);
-	}
-	alterGlobalData = function(list){
-	    if(deadline == 0)
-		return list;
-	    else{
-		return getNewGlobalData(list,deadline,1);
-	    }
-	}
+    var deadline = 731,gd = [];
+    setdeadline = function(){
+        deadline = document.getElementById("Mobility").selectedIndex;
+        
+        if(deadline==3)
+        deadline = 7;
+        else if(deadline == 4)
+        deadline = 30;
+        else if(deadline == 5)
+        deadline = 366;
+        else if(deadline == 1)
+        deadline = 2;
+        else if(deadline == 2)
+        deadline = 3;
+        
+        getNewGlobalData(globaldata,deadline,0);
+    }
+    alterGlobalData = function(list){
+        if(deadline == 0)
+        return list;
+        else{
+        return getNewGlobalData(list,deadline,1);
+        }
+    }
 
-	var temp_array = alterGlobalData(globaldata);
-	$(document).ready(function() {
+    var temp_array = alterGlobalData(globaldata);
+    $(document).ready(function() {
             var doughnutData = [];
             var oslen = osfamilydata.length;
-	    var colours2=["#3b1261","#23355b","#663338","#6600cc","#105487","#763626"];
+        var colours2=["#3b1261","#23355b","#663338","#6600cc","#105487","#763626"];
             var count = 0;
             for(var i = 0; i<oslen; i++){
                 var a = {
@@ -446,7 +446,7 @@
 
             var doughnutData2 = [];
             var oslen2 = osfamilydata.length;
-	    var colours2=["#3b1261","#23355b","#663338","#6600cc","#105487","#763626"];
+        var colours2=["#3b1261","#23355b","#663338","#6600cc","#105487","#763626"];
             var count2 = 0;
             var continent = [];
             continent.push({
@@ -481,7 +481,7 @@
                 doughnutData2.push(a);
                 if(continent[i].count > 0)
                 count2++;
-	    }
+        }
 
 
 
@@ -497,7 +497,7 @@
                 responsive: true,
             };
             var ctx = document.getElementById("doughnutChart2").getContext("2d");
-	    doughnutChart2 = new Chart(ctx).Doughnut(doughnutData2, doughnutOptions);
+        doughnutChart2 = new Chart(ctx).Doughnut(doughnutData2, doughnutOptions);
 
 
             var labels = [];
@@ -635,40 +635,40 @@
                         tooltip: false
                     }
             );
-	};
+    };
 
-	updateDoughnutChart = function(GD){
+    updateDoughnutChart = function(GD){
 
             var oslen = GD.length;
-	    var a = [];
-	    var flag;
-	    var doughnutData3 = [];
-		for(var i = 0; i<oslen; i++){
-		    flag = 0;
-		    for(var j=0; j<a.length;j++){
-			if(a[j].title == GD[i].title){
-			    a[j].count++;
-			    flag = 1;
-			    break;
-			}
-		    }
-		    if(flag==0){
-			a.push({
-			    title: GD[i].title,
-				count: 1
-			}
-		    );
-		    }
-		}
-		var colours=["#111a2d","#3b1261","#23355b","#663338","#6600cc","#105487","#763626","#2a3132","#336b87","#90a5c6","#68829e","#505160","#003b46","#07575b","#2e4601","3f681c","#324851","#5d535d","#4f6457", "#063852"];
-		var cc = 0;
+        var a = [];
+        var flag;
+        var doughnutData3 = [];
+        for(var i = 0; i<oslen; i++){
+            flag = 0;
+            for(var j=0; j<a.length;j++){
+            if(a[j].title == GD[i].title){
+                a[j].count++;
+                flag = 1;
+                break;
+            }
+            }
+            if(flag==0){
+            a.push({
+                title: GD[i].title,
+                count: 1
+            }
+            );
+            }
+        }
+        var colours=["#111a2d","#3b1261","#23355b","#663338","#6600cc","#105487","#763626","#2a3132","#336b87","#90a5c6","#68829e","#505160","#003b46","#07575b","#2e4601","3f681c","#324851","#5d535d","#4f6457", "#063852"];
+        var cc = 0;
             for(var i = 0; i<a.length; i++){
                 var b = {
                     value: a[i].count,
                     color: colours[cc],
                     highlight: "#7da3a1",
                     label: a[i].title
-		};
+        };
                 doughnutData3.push(b);
                 cc++;
             }
@@ -685,9 +685,9 @@
                 responsive: true,
             };
             var ctx = document.getElementById("doughnutChart3").getContext("2d");
-	    doughnutChart = new Chart(ctx).Doughnut(doughnutData3, doughnutOptions);
+        doughnutChart = new Chart(ctx).Doughnut(doughnutData3, doughnutOptions);
 
-	};
+    };
 
 
 

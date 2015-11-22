@@ -49,7 +49,7 @@ if (!empty($_POST)) {
 	}
 
 	arsort($finalscorearray);
-	print_r($finalscorearray);
+	//print_r($finalscorearray);
 	$sliced_array = array_slice($finalscorearray, 0, 5);
 
 	$titlearray;
@@ -62,6 +62,6 @@ if (!empty($_POST)) {
 		}
 
 	}
-	//print_r($titlearray);
+	print_r($titlearray);
 }
 ?>
