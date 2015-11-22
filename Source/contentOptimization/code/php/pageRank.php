@@ -50,8 +50,10 @@ while($row = mysql_fetch_array($retval, MYSQL_NUM))
 			$pageview=$row1['pageViews'];
 			$pageview+=$row['count'];
 						
+			$temp=$row['url'];
+
 			$basep=returnBasePriority($row['dateViewed'],$pageview);
-			$sql1="update url_and_baseScore_and_pageViews set pageViews=$pageview,baseScore=$basep where url=$row[1]";
+			$sql1="update url_and_baseScore_and_pageViews set pageViews=$pageview,baseScore=$basep where url=$temp";
 			$retval2 = mysql_query( $sql1, $conn );
 		}
 
@@ -61,8 +63,10 @@ while($row = mysql_fetch_array($retval, MYSQL_NUM))
 		
 		$pageview=$row['count'];
 
+		$temp=$row['url'];
+
 		$basep=returnBasePriority($row['dateViewed'],$pageview);
-		$sql1="insert into url_and_baseScore_and_pageViews (url,baseScores,pageViews) values($row[0],$basep,$pageview)";
+		$sql1="insert into url_and_baseScore_and_pageViews (url,baseScores,pageViews) values($temp,$basep,$pageview)";
 		$retval2 = mysql_query( $sql1, $conn );	
 	}
 }
