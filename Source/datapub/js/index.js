@@ -18,15 +18,6 @@
 
 
     app.controller('RealTimeSectionsController', ['$scope', function(scope) {
-	deadline = localStorage.getItem("deadline");
-
-	var GLOB = []; 
-	if(deadline==0){
-	    GLOB =globaldata;
-	}
-	else{
-	    GLOB = getNewGlobalData(globaldata, deadline);
-	}
     var count=0;
     var count2=0;
     var totaltime=0;
@@ -47,7 +38,7 @@
     for(var i=0;i<osfamilydata.length;i++){
 	actualvisits += osfamilydata[i].visits;
     }
-    var pagetotal = GLOB.length;
+    var pagetotal = globaldata.length;
     var viewspervisit = pagetotal/actualvisits;
 
     scope.realtimesections = [{
@@ -61,11 +52,11 @@
     }, {
 	label: 'Avg Time Spent',
 	    name: 'avgtimespent',
-	    value: parseInt(avgTimeSpent) + 'm' // has to be obtained from analytics
+	    value: parseInt(avgTimeSpent) + 's' // has to be obtained from analytics
     }, {
 	label: 'Page hits &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
 	    name: 'virality',
-	    value: parseInt(GLOB.length) // try tracking sharing
+	    value: parseInt(globaldata.length) // try tracking sharing
     }, {
 	label: 'Read rate &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
 	    name: 'readrate',
@@ -139,14 +130,7 @@
 
     app.controller('TrendingStoriesController', ['$scope', function(scope) {
 	/////////////////////
-	deadline = localStorage.getItem("deadline");
-	var GLOB = []; 
-	if(deadline==0){
-	    GLOB =globaldata;
-	}
-	else{
-	    GLOB = getNewGlobalData(globaldata, deadline);
-	}
+	var GLOB = globaldata;
     scope.popular = [];
     len = GLOB.length;
     for(var i = 0; i < len; i++){
