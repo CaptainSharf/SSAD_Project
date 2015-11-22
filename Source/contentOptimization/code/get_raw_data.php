@@ -1,8 +1,14 @@
 <?php
 
-$fpointer = fopen('a.txt', 'w');
+$fpointer = fopen('post_output.txt', 'w');
+fwrite($fpointer, $_POST['domain_id']);
+fwrite($fpointer, "\n");
+fwrite($fpointer, $_POST['visitor_id']);
+fwrite($fpointer, "\n");
+fwrite($fpointer, $_POST['url']);
+fwrite($fpointer, "\n");
 fwrite($fpointer, $_POST['tag_string']);
-fwrite($fpointer, $_POST['title']);
+fwrite($fpointer, "\n");
 fclose($j_file);
 
 if (empty($_POST)) {
