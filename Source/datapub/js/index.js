@@ -16,6 +16,8 @@
 	};
     });
 
+
+
     app.controller('RealTimeSectionsController', ['$scope', function(scope) {
 
 	var count=0;
@@ -102,24 +104,7 @@
 	    label: 'Search',
 	    name: 'search'
 	}]
-	},/* 
-	{
-	    title: 'Platform',
-	    type: 'platform',
-	    items: [{
-		label: 'Desktop',
-		name: 'desktop'
-	    }, {
-		label: 'Mobile Web',
-		name: 'mobileweb'
-	    }, {
-		label: 'Mobile App',
-		name: 'mobileapp'
-	    }, {
-		label: 'Tablet',
-		name: 'tablet'
-	    }]
-	},*/ 
+	},
 	{
 	    title: 'Location',
 	    type: 'location',
@@ -173,8 +158,6 @@
 	scope.popular.sort(function(a,b) { 
 		return b.data - a.data 
 	});
-	//here scpe.poplr
-	/////////////////////
     }]);
 
     app.controller('TopFilterController', ['$scope', function(scope) {
@@ -300,52 +283,8 @@
 	setTimeout(doFilter, 50);
     }
 
-    /* 
-     * Comment the hard code below here
-     *
-     * */
-    generate = function() {
-	var visitor = ['new', 'returning', 'loyal', 'influencers'];
-	var source = ['internal', 'social', 'direct', 'links', 'search'];
-	var platform = ['desktop', 'mobileweb', 'mobileapp', 'tablet'];
-	var location = ['northamerica', 'southamerica', 'africa', 'asia', 'europe', 'australia'];
-
-	var rows = [];
-	var total = 14356;
-	var tags = [];
-
-	$.each(articles, function(i, item) {
-	    $.each(item.tags, function(i, tag) {
-		if (tags.indexOf(tag) == -1) {
-		    tags.push(tag);
-		}
-	    })
-	});
-
-	for (var i = 0; i < total; i++) {
-
-
-	    var article = articles[parseInt(articles.length * Math.random())];
-
-	    if (i < 2000) {
-		article = articles[6];
-	    }
-
-	    if (i > 2000 && i < 4000) {
-		article = articles[7];
-	    }
-	    var item = {
-		visitor: visitor[parseInt(visitor.length * Math.random())],
-		source: source[parseInt(source.length * Math.random())],
-		platform: platform[parseInt(platform.length * Math.random())],
-		location: location[parseInt(location.length * Math.random())],
-		articleId: article.id,
-		externalTag: tags[parseInt(tags.length * Math.random())],
-		internalTag: article.tags[parseInt(article.tags.length * Math.random())],
-		time: i < 2000 ? 12 : i < 4000 ? 17 : parseInt(Math.random() * 24)
-	    };
-	    rows.push(item);
-	}
-	console.log(JSON.stringify(rows));
+    filter_by_deadline = function(deadline){
+	console.log(deadline);
     }
+
 })();
