@@ -73,7 +73,9 @@ mysql_close($conn);
 
 //functions for finding base score
 
-
+function writeMsg() {
+    echo "Hello world!";
+}
 
 function returnBasePriority($date_added,$page_views){
 	
@@ -90,6 +92,9 @@ function returnBasePriority($date_added,$page_views){
 	
 }
 
+
+//	$temp=strtotime("2008:08:07 18:11:11");
+//echo "$temp";
 
 
 ?> 	
