@@ -57,17 +57,18 @@
     <div class="row white-bg">
         <div class="col-md-2" style="border-right: 1px solid #e7eaec;" ng-controller="SideMenuController">
 	    <div id="logo"></div>
-<hr>
-	    <div id = "dropdown">
-<hr>
-		<select>
-		    <option value="1"> 1 day </option>
-		    <option value="2"> 2 days </option>
-		    <option value="7"> 7 days </option>
-		    <option value="30"> 30 days </option>
-		    <option value="365"> 1 year </option>
+	    <hr>
+	    <h2 style = "text-align:center " > <strong> Filters </strong> </h2>
+	    <div id = "ibox-content" style = "text-align:center">
+		<select id="Mobility" name="Mobility" style = "width:80%" onchange= "setdeadline()">
+		    <option selected ="">None </option>
+		    <option> 1 day </option>
+		    <option> 7 days </option>
+		    <option> 30 days </option>
+		    <option> 1 year </option>
 		</select>
 	    </div>
+	    <br>
             <div class="ibox-content" ng-repeat="section in sections">
                 <h2>{{section.title}}</h2>
                 <ul class="todo-list m-t small-list">
@@ -383,6 +384,10 @@
     </div>
 
 <script type="text/javascript">
+
+	setdeadline = function(){
+	var deadline = document.getElementById("Mobility").selectedIndex;
+	console.log(deadline);}
 
 	$(document).ready(function() {
             var doughnutData = [];
