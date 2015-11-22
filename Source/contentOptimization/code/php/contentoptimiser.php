@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
 <?php
 if (!empty($_POST)) {
 	$mysql_host = 'localhost';
@@ -5,20 +12,17 @@ if (!empty($_POST)) {
 	$mysql_pass = 'justdoit123';
 	$mysql_db   = 'content_optimization';
 	$conn       = mysql_connect($mysql_host, $mysql_user, $mysql_pass) or die("connection failed".mysql_error());
-	echo 'Connected successfully CO';
+	//echo 'Connected successfully CO';
 
 	mysql_select_db('content_optimization');
 
 	$sql    = "SELECT * from `url_and_baseScore_and_pageViews`;";
 	$retval = mysql_query($sql, $conn) or die("connection failed 2".mysql_error());
-	echo "1\n";
 	$finalscorearray;
 	$sumtagscore = 0;
 	$visitorId   = $_POST['visitor_id'];
 	while ($row = mysql_fetch_array($retval, MYSQL_ASSOC)) {
-		$temp = $row['url'];
-		//print_r($temp);
-		echo "\n";
+		$temp    = $row['url'];
 		$sql1    = "SELECT distinct `tag` from `personal_score` where `url`='$temp';";
 		$retval1 = mysql_query($sql1, $conn) or die("connection failed 3".mysql_error());
 
@@ -62,6 +66,18 @@ if (!empty($_POST)) {
 		}
 
 	}
-	print_r($titlearray);
+	//print_r($titlearray);
+	$i            = 1;
+	$sliced_title = array_slice($titlearray, 0, 5);
+	foreach ($sliced_title as $key => $value) {
+		echo "<a href=$key>$i- $value </a></br>";
+		$i += 1;
+	}
+	//$j_titlearray = json_encode($titlearray);
+	//print_r($j_titlearray);
 }
 ?>
+
+
+</body>
+</html>

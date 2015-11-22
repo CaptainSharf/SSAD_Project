@@ -46,7 +46,7 @@ if (!empty($_POST)) {
 		} else {
 			$row    = mysql_fetch_array($retval_vpage, MYSQL_ASSOC);
 			$vscore = (int) $row['viewScore'];
-			$vscore -= 17;
+			$vscore -= 170;
 			echo "\nvscore $vscore\n";
 			$url_temp        = $row['url'];
 			$vid_temp        = $row['visitorId'];
