@@ -75,7 +75,6 @@ function returnBasePriority($date_added, $page_views) {
 	$temp = log(max($page_views, 1), 10);
 
 	$ans = round($temp+$seconds, 7);
-
 	return $ans;
 
 }
