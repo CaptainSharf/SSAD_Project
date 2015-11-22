@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="plugins/tageditor/jquery.tag-editor.css">
     <link rel="stylesheet" href="plugins/morris/morris-0.4.3.min.css">
     <script src="js/json_processing/a.js"></script>
+    <script src="js/json_processing/tagData.js"></script>
     <script src="js/all_tags.js"></script>
     <script src="js/json_processing/osfamily.js"></script>
     <script src="js/json_processing/time24.js"></script>
@@ -109,7 +110,6 @@
                 <div class="col-md-1"></div>
                 <div class="col-md-2" ng-repeat="item in realtimesections">
                     <div class="ibox-title">
-                        <span class="label label-info pull-right">Daily</span>
                         <h5 ng-bind-html="item.label | unsafe"></h5>
                     </div>
                     <div class="ibox-content">
@@ -502,37 +502,27 @@
 
             var labels = [];
             var data1 = [];
-            var data2 = [];
-
+	    var temp_tag_list = [];
+	    // get count of each page
+	    // thus get count of each tag
+	    // as we know what page has what tags
             $.each(articles, function(i, item) {
                 $.each(item.tags, function(i, tag) {
                     if (labels.indexOf(tag) == -1) {
                         labels.push(tag);
                         data1.push(0);
-                        data2.push(0);
                     }
                 })
             });
-
+	    //generate a tag count array//
+	    //change the array name from tagdata to else and dictionary manner//
             $.each(tagdata, function(i, item) {
                 i = labels.indexOf(item.externalTag);
                 data1[i]++;
-                i = labels.indexOf(item.internalTag);
-                data2[i]++;
             });
             var tagsData = {
                     labels: labels,
                     datasets: [
-                        {
-                            label: "My First dataset",
-                            fillColor: "rgba(51,0,128,0.2)",
-                            strokeColor: "rgba(220,220,220,1)",
-                            pointColor: "rgba(220,220,220,1)",
-                            pointStrokeColor: "#fff",
-                            pointHighlightFill: "#fff",
-                            pointHighlightStroke: "rgba(220,220,220,1)",
-                            data: data2
-                        },
                         {
                             label: "My Second dataset",
                             fillColor: "rgba(26,179,148,0.2)",
