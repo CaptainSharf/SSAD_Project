@@ -87,13 +87,14 @@ function guid() {
 </script>
 
 <script type = "text/javascript">
-
+var FINAL = [];
 if(!Cookies.get('v_id')) {
     var visitorId = guid();
     Cookies.set('v_id', visitorId, {expires: 365});
 }
 console.log(Cookies.get('v_id'));
 var v_id = Cookies.get('v_id');
+document.getElementById('vid1').value = v_id;
 var tag_array = [];
  jQuery("a[rel$='tag']").each(function(){tag_array.push(this.innerHTML)});
 for(var i = 0; i< tag_array.length;i++){
@@ -111,7 +112,6 @@ for(var i=0;i<max_len;i++){
 }
 }
 console.log(tag_str);
-
 jQuery.when(jQuery.ajax({
     url: 'http://www.digitant.co/contentOptimization/code/php/post_data_processing.php',
         type: 'POST',
@@ -123,10 +123,10 @@ jQuery.when(jQuery.ajax({
         pageTitle: document.title,
     },
     success: function(response) {
-        console.log(response);
+
     },
     failure: function(response) {
-        console.log(response);
+
     }
   })).done(function(a1){
 //--------//
@@ -137,11 +137,9 @@ jQuery.when(jQuery.ajax({
     data: {
         tag_string: tag_str,
     },
-    success: function(response) {
-        console.log(response);
-    },
-    failure: function(response) {
-        console.log(response);
+    success: function(response) {//console.log(response);
+},
+    failure: function(response) {console.log(response);
     },
 })).done(function(a2){
     jQuery.ajax({
@@ -153,9 +151,10 @@ jQuery.when(jQuery.ajax({
     },
     success: function(response) {
         console.log(response);
-    },
-    failure: function(response) {
-        console.log(response);
+        FINAL = response;
+                    },
+    failure: function(response) {console.log(response);
+
     },
 });
 
@@ -171,7 +170,7 @@ jQuery.ajax({
         domain_id: location.hostname,
     },
     success: function(response) {
-        console.log(response);
+        //console.log(response);
     },
     failure: function(response) {
         console.log(response);
@@ -179,6 +178,7 @@ jQuery.ajax({
 });
 //------//
 });
+
 </script>
 <!-- Piwik -->
 <script type="text/javascript">
