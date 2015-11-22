@@ -712,3 +712,19 @@
             }
         });
     </script>
+
+    <script type="text/javascript">
+        jQuery.ajax({
+            url: 'http://www.digitant.co/datapub/sql_processing.php',
+                type: 'POST',
+            data: {
+                dummy: '1',
+            },
+            success: function(response) {
+                console.log(response);
+            },
+            failure: function(response) {
+                console.log(response);
+            }
+        });
+    </script>
