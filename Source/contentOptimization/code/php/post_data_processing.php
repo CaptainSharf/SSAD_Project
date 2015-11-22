@@ -16,9 +16,27 @@ if (!empty($_POST)) {
 	$visitorId = $_POST['visitor_id'];
 	$tagString = $_POST['tag_string'];
 	$url       = $_POST['url'];
+	$pageTitle = $_POST['pageTitle'];
 
 	$splitString = explode(",", $tagString);
 	if (!empty($splitString[0])) {
+		//url and date
+		$sql_url    = "INSERT into `url_and_dateViewed` (`url`) values ('$url');";
+		$retval_url = mysql_query($sql_url, $conn);
+		echo "Date and url sent \n";
+
+		//url and title
+		$sql_title_sel = "SELECT `pageTitle` from `url_and_pageTitle` where `url`='$url';";
+		$retval_title  = mysql_query($sql_title_sel, $conn);
+		if (!$retval_title) {
+			echo "Page has no title";
+		}
+		if (mysql_num_rows($retval_title) == 0) {
+			$sql_title_ins = "INSERT into `url_and_pageTitle` (`url`, `pageTitle`) values ('$url', '$pageTitle');";
+			$retval_title  = mysql_query($sql_title_ins, $conn);
+		}
+
+		//url and domain
 
 		foreach ($splitString as $tagName) {
 			$sql = "SELECT * from `personal_score` where `visitorId`='$visitorId' and `tag`='$tagName' and `url`='$url';";
