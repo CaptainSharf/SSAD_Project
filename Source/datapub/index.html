@@ -59,12 +59,13 @@
 	    <div id="logo"></div>
 	    <hr>
 	    <h2 style = "text-align:center " > <strong> Filters </strong> </h2>
-	    <div id = "ibox-content" style = "text-align:center">
+	    <div id = "ibox-content" style = "text-align:center">View data from the last: 
 		<select id="Mobility" name="Mobility" style = "width:80%" onchange= "setdeadline()">
-		    <option selected ="">None </option>
+		    <option selected ="">All time </option>
 		    <option> 1 day </option>
-		    <option> 7 days </option>
-		    <option> 30 days </option>
+		    <option> 2 days </option>
+		    <option> 1 week </option>
+		    <option> 1 month </option>
 		    <option> 1 year </option>
 		</select>
 	    </div>
@@ -385,15 +386,28 @@
 
 <script type="text/javascript">
 
-	var deadline = 0;
+	var deadline = 731,gd = [];
 	setdeadline = function(){
 	    deadline = document.getElementById("Mobility").selectedIndex;
+	    
+	    if(deadline==3)
+		deadline = 7;
+	    else if(deadline == 4)
+		deadline = 30;
+	    else if(deadline == 5)
+		deadline = 366;
+	    else if(deadline == 1)
+		deadline = 2;
+	    else if(deadline == 2)
+		deadline = 3;
+	    
+	    getNewGlobalData(globaldata,deadline,0);
 	}
 	alterGlobalData = function(list){
 	    if(deadline == 0)
 		return list;
 	    else{
-		return getNewGlobalData(list);
+		return getNewGlobalData(list,deadline,1);
 	    }
 	}
 
@@ -401,7 +415,7 @@
 	$(document).ready(function() {
             var doughnutData = [];
             var oslen = osfamilydata.length;
-            var colours2 = ["#c4e1ac","#4e69a2","#dedede","#b5e8cf","#a3e1d4"];
+	    var colours2=["#3b1261","#23355b","#663338","#6600cc","#105487","#763626"];
             var count = 0;
             for(var i = 0; i<oslen; i++){
                 var a = {
@@ -432,7 +446,7 @@
 
             var doughnutData2 = [];
             var oslen2 = osfamilydata.length;
-            var colours2 = ["#c4e1ac","#4e69a2","#dedede","#b5e8cf","#a3e1d4"];
+	    var colours2=["#3b1261","#23355b","#663338","#6600cc","#105487","#763626"];
             var count2 = 0;
             var continent = [];
             continent.push({
