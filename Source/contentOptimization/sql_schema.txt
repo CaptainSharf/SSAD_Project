@@ -1,0 +1,6 @@
+Database name: content_optimization
+Tables:
+personal_score {visitorId varchar(40), domainId varchar(300), tag varchar(200), tagScore int}
+url_and_pageTitle {url varchar(400), pageTitle varchar(300)}
+url_and dateViewed {url varchar(400), dateViewed timestamp}
+url_and_baseScore_and_pageViews {url varchar(400), baseScore int, pageViews int}
