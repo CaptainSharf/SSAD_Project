@@ -1,12 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title></title>
-        <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<title>Recommended Pages</title>
 </head>
 <body>
 
@@ -74,24 +69,10 @@ if (!empty($_POST)) {
 	//print_r($titlearray);
 	$i            = 1;
 	$sliced_title = array_slice($titlearray, 0, 5);
-echo "<h2 style=\"text-align:center\">Recommended Pages</h2>";
-echo "<div class = \"container\" style = \"font-size:200%\">";
-
-echo "<table class=\"table table-hover\">";
-
-   echo "<tbody>";
 	foreach ($sliced_title as $key => $value) {
-                echo "<tr class = \"success\">";
-                echo "<td>";
-                echo "$i";
-                echo "</td>";
-                echo "<td>";
-                echo "<a href=$key>$value</a>";
-                echo "</td>";
-                echo "</tr>";
+		echo "<div><a href=$key>$i- $value </a></br></div>";
 		$i += 1;
 	}
-   echo "</tbody>";
 	//$j_titlearray = json_encode($titlearray);
 	//print_r($j_titlearray);
 }
